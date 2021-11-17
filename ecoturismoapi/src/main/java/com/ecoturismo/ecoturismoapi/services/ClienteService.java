@@ -39,4 +39,8 @@ public class ClienteService {
         return this._clienteRepository.existsById(id);
     }
 
+    public Cliente findByCedula(String cedula){
+        return this._clienteRepository.findByCedula(cedula).orElse(new Cliente());
+    }
+
 }

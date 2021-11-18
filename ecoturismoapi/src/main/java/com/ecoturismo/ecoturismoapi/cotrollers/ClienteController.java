@@ -1,11 +1,14 @@
 package com.ecoturismo.ecoturismoapi.cotrollers;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ecoturismo.ecoturismoapi.exeptions.CustomExeption;
 import com.ecoturismo.ecoturismoapi.models.Cliente;
 import com.ecoturismo.ecoturismoapi.services.ClienteService;
+import com.ecoturismo.ecoturismoapi.utils.Autorizacion;
 import com.ecoturismo.ecoturismoapi.utils.BCrypt;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 
 @RestController
@@ -52,4 +58,34 @@ public class ClienteController {
         return this._clienteService.findAll();
     }
 
+    @PostMapping("/clientes/login")
+    ResponseEntity<Cliente> login(@RequestBody Cliente cliente){
+        Cliente u = this._clienteService.findByCedula(cliente.getCedula());
+        if (u.getCedula() == null){
+            throw new CustomExeption("Usuario o Contraseña es incorrecta");
+        }
+        if(!BCrypt.checkpw(cliente.getPassword(), u.getPassword())){
+            throw new CustomExeption("Usuario o Contraseña- es incorrecta");
+        }
+
+        String token = "";
+        Long tiempo = System.currentTimeMillis();
+
+        if (u.getId() != ""){
+            token = Jwts.builder()
+                .signWith(SignatureAlgorithm.HS256, Autorizacion.key)
+                .setSubject(u.getNombre())
+                .setIssuedAt(new Date(tiempo))
+                .setExpiration(new Date(tiempo + 900000))
+                .claim("cedula", u.getCedula())
+                .claim("rol", u.getRol())
+                .compact();
+        }
+
+        u.setToken(token);
+        //this._clienteService.save(cliente);
+        //Map<String, String> response = new HashMap<>();
+        //response.put("mensaje", "El cliente se ha registrado con exito");
+        return ResponseEntity.ok(u);
+    }
 }

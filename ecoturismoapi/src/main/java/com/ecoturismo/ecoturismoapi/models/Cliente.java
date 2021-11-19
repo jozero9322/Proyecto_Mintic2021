@@ -1,5 +1,8 @@
 package com.ecoturismo.ecoturismoapi.models;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Clientes")
 public class Cliente {
     
     private String id; 
@@ -7,6 +10,8 @@ public class Cliente {
     private String nombre;
     private String usuario;
     private String password;
+    private String rol;
+    private String token;
 
     public Cliente(String id, String cedula, String nombre, String usuario, String password){
         this.id = id;
@@ -18,6 +23,23 @@ public class Cliente {
 
     public Cliente(){
 
+    }
+
+    
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getId() {

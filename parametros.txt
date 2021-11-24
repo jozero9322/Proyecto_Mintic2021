@@ -1,0 +1,133 @@
+SPRINT 2
+
+Grupo 7:
+EMILIANO DUQUE PADILLA 
+
+MARIA CLARA GUZMAN DURAN 
+
+JOHN FREDY GONZALEZ MARTINEZ 
+
+ARBOL ENRIQUE MONSALVE JAIMES 
+
+JOHAN SEBASTIAN CAMILO RODRIGUEZ 
+
+ 
+
+24 DE NOVIEMBRE DE 2021 
+
+DIPLOMADO MISION MINTIC 2022 
+
+
+*************************************************************************************************************
+
+1. Cualquier usuario registrado podrá entrar al sistema siempre y cuando escriba su cédula y su password-
+http://localhost:8080/api/clientes/login
+
+
+Estos son los dos usuarios que se entregan inicialmente para acceder al sistema y están registrados
+[
+  {
+    "id": "61971282194f640bacce7e01",
+    "cedula": "1111",
+    "nombre": "jhon",
+    "usuario": "UsuarioJhon",
+    "password": "1111",
+    "rol": "user",
+    "token": null
+  },
+  {
+    "id": "619e619a0305cc2ff7151a51",
+    "cedula": "2222",
+    "nombre": "Emiliano",
+    "usuario": "UsuarioEmiliano",
+    "password": "2222",
+    "rol": "Admin",
+    "token": null
+  }
+]
+
+*************************************************************************************************************
+
+2. El usuario de la API podrá lomearse a travez de la ruta: 
+http://localhost:8080/api/clientes/login
+
+    "cedula": "1111",
+    "password": "1111"
+
+Con esto tentrá como respuesta algo como esto:
+
+{
+  "id": "61971282194f640bacce7e01",
+  "cedula": "1111",
+  "nombre": "jhon",
+  "usuario": "UsuarioJhon",
+  "password": "$2a$10$5Lb.1XlC4rrqn1ssQSosleaGkjEwnBuE8nUbpcPnDsDSd.wGpIg..",
+  "rol": "user",
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqaG9uIiwiaWF0IjoxNjM3NzY5NjAxLCJleHAiOjE2Mzc3NzA1MDEsImNlZHVsYSI6IjExMTEiLCJyb2wiOiJ1c2VyIn0.RJ4-zOGSAAe_GeUz9Qk5cJoGnERfFYdp7nFZLaFLrrE"
+}
+
+Se ve que se ha generado un token que tiene una duración de 30 minutos.
+
+*************************************************************************************************************
+
+3. Una vez se ha iniciado sesión y usando el token para verificarse, puede:
+
+Obtener todos lo paquetes creados.
+Crear paquetes nuevos.
+Editar los paquetes creados:
+Eliminar los paquetes.
+
+Obtener los clientes.
+Crear clientes.
+Eliminar un cliente.
+Actualizar clientes
+
+Obtener las reservas.
+Crear Reservas.
+
+
+*************************************************************************************************************
+Este el el formato de hacer una reserva
+
+Reservas:
+
+{
+    "personas": "2",
+    "niños":"3",
+    "total":"$345.000",
+    "Cliente":{
+            "cedula": "2222",
+            "nombre": "Emiliano",
+            "usuario": "UsuarioEmiliano",
+            "password": "2222",
+            "rol": "Admin",
+            "token": null
+    },
+    "Paquete":{
+        "nombre":"Tour Las Orquideas",
+        "ubicacion":"Antioquia",
+        "precio":"350.000",
+        "duracion":"2 dias",
+        "salida":"Sábado"
+    }
+}
+
+*************************************************************************************************************
+
+ Rutas
+
+Cliente:
+GET = http://localhost:8080/api/clientes
+POST = http://localhost:8080/api/clientes
+PUT = http://localhost:8080/clientes
+DELETE = http://localhost:8080/api/clientes/"id"
+
+Paquete:
+GET = http://localhost:8080/api/paquetes
+POST = http://localhost:8080/api/paquetes
+PUT = http://localhost:8080/api/paquetes
+DELETE = http://localhost:8080/api/paquetes/"id"
+
+Reservas:
+GET = 
+POST = http://localhost:8080/api/reservas

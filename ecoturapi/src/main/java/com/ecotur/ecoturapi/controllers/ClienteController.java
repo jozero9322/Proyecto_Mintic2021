@@ -13,8 +13,11 @@ import com.ecotur.ecoturapi.utils.BCrypt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,7 +79,7 @@ public class ClienteController {
                 .signWith(SignatureAlgorithm.HS256, Autorizacion.key)
                 .setSubject(u.getNombre())
                 .setIssuedAt(new Date(tiempo))
-                .setExpiration(new Date(tiempo + 900000))
+                .setExpiration(new Date(tiempo + 1800000))
                 .claim("cedula", u.getCedula())
                 .claim("rol", u.getRol())
                 .compact();
@@ -87,6 +90,29 @@ public class ClienteController {
         //Map<String, String> response = new HashMap<>();
         //response.put("mensaje", "El cliente se ha registrado con exito");
         return ResponseEntity.ok(u);
+    }
+    @PutMapping("/clientes")
+    ResponseEntity<Map<String,String>> update(@RequestBody Cliente cliente){
+        this._clienteService.save(cliente);
+        Map<String,String> response = new HashMap<>();
+        response.put("mensaje","El Cliente se ha actualizado correctamente");
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/clientes/{id}")
+    ResponseEntity<Map<String,String>> delete(@PathVariable String id){
+        
+        Boolean existenciaCliente = this._clienteService.existById(id);
+        Map<String,String> response = new HashMap<>();
+
+        if ( !existenciaCliente ){
+            response.put("mensaje","Este CLIENTE no existe en la BD");
+            return ResponseEntity.ok(response);
+        }
+        this._clienteService.deleteById(id);
+        
+        response.put("mensaje","El Cliente se ha ELIMINADO correctamente");
+        return ResponseEntity.ok(response);
     }
 }
 

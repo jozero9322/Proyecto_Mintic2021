@@ -1,5 +1,8 @@
 package com.ecotur.ecoturapi.models;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Reservas")
 public class Reserva {
     private String id;
     private String personas;

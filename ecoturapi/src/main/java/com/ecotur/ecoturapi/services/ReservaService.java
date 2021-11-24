@@ -26,4 +26,8 @@ public class ReservaService {
         return this._reservaRepository.findAll();
     }
 
+    public Boolean existById(String id) {
+        return null;
+    }
+
 }

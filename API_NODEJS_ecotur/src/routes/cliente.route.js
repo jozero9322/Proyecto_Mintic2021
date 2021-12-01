@@ -8,16 +8,16 @@ const {getClientes, getCliente,createCliente, editCliente, deleteCliente} = requ
 router.get('/clientes',getClientes);
 
 // Gets only one client
-router.get('/cliente',getCliente);
+router.get('/cliente/:cedula',getCliente);
 
 // Saves one client
 router.post('/cliente',createCliente);
 
 // Edits one client
-router.put('/cliente',editCliente);
+router.put('/cliente/:cedula',editCliente);
 
 // Deletes one client
-router.delete('/cliente',deleteCliente);
+router.delete('/cliente/:cedula',deleteCliente);
 
 
 // Exports this constant to be used in server.js

@@ -5,9 +5,10 @@ const modelCliente = require('../model/cliente.model');
 clienteCtrl.getClientes = async (req, res) => {
     try {
         const clientes = await modelCliente.find({});
-        res.json(clientes);
+        res.status(200).json(clientes);
     } catch (error) {
         console.log(error);
+        res.status(400).send("Ocurrio un error en la operación");
     }
 };
 
@@ -18,10 +19,11 @@ clienteCtrl.getCliente = async (req, res) => {
         if(cliente.legth == 0){
             res.send("Esta cédula no esta en la base de datos");
         } else {
-            res.json(cliente);
+            res.status(200).json(cliente);
         }
     } catch (error) {
         console.log(error);
+        res.status(400).send("Ocurrio un error en la operación");
     }
 };
 
@@ -36,9 +38,10 @@ clienteCtrl.createCliente = async (req, res) => {
         };
         let nuevoCliente = new modelCliente(clientTemp);
         await nuevoCliente.save();
-        res.send("Se ha creado un cliente nuevo");
+        res.status(201).send("Se ha creado un cliente nuevo");
     } catch (error) {
         console.log(error);
+        res.status(400).send("Ocurrio un error en la operación");
     }
 };
 
@@ -52,11 +55,11 @@ clienteCtrl.editCliente = async (req, res) => {
             password: req.body.password,
         };
         await modelCliente.updateOne({cedula:req.params.cedula},clientTemp);
-        res.send("El cliente se ha actualizado");
+        res.status(201).send("El cliente se ha actualizado");
 
     } catch (error) {
-        res.send("Hubo un error al actulizar el cliente");
         console.log(error);
+        res.status(400).send("Ocurrio un error en la operación");
     }
 };
 
@@ -64,9 +67,10 @@ clienteCtrl.editCliente = async (req, res) => {
 clienteCtrl.deleteCliente = async (req, res) => {
     try {
         await modelCliente.deleteOne({cedula:req.params.cedula});
-        res.send("El cliente se ha eliminado correctamente");
+        res.status(201).send("El cliente se ha eliminado correctamente");
     } catch (error) {
         console.log(error);
+        res.status(400).send("Ocurrio un error en la operación");
     }
 };
 

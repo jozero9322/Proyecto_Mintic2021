@@ -6,8 +6,8 @@ let reservaSchema = new Schema({
     personas: {type:String, required:true},
     ninos: {type:String, required:true},
     total: {type:String, required:true},
-    cliente: {type:String, required:true},
-    paquete: {type:String, required:true}
+    cliente_cedula: {type:String, required:true},
+    paquete_codigo: {type:String, required:true}
 });
 
 const Reserva = mongoose.model('Reserva',reservaSchema);

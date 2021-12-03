@@ -1,0 +1,80 @@
+**************************************************************************************************
+CLIENTES
+**************************************************************************************************
+Para agregar un cliente por el verbo POST
+localhost:3001/cliente
+{
+    "cedula": "11111",
+    "nombre": "Emiliano",
+    "usuario": "Administrador",
+    "password": "11111",
+    "token": "",
+}
+
+Para ver un cliente por em verbo GET
+localhost:3001/cliente/cedula
+
+Para Editar un cliente por em verbo PUT
+localhost:3001/cliente/11111
+
+Para Eliminar un cliente por em verbo DELETE
+localhost:3001/cliente/11111
+
+
+**************************************************************************************************
+PAQUETES
+**************************************************************************************************
+Para agregar un paquete por el verbo POST
+localhost:3001/paquete
+  {
+    "codigo": "1",
+    "nombre_pac": "Eje Cafetero",
+    "ubicacion": "Eje Cafetero",
+    "precio": "320000",
+    "duracion": "3 dias",
+    "salida": "Sabado"
+  }
+
+Para ver un Paquete por em verbo GET
+localhost:3001/reserva/codigo
+
+Para Editar un Paquete por em verbo PUT
+localhost:3001/reserva/codigo
+
+Para Eliminar un Paquete por em verbo DELETE
+localhost:3001/reserva/codigo
+
+**************************************************************************************************
+RESERVAS
+**************************************************************************************************
+Para agregar una Reserva por el verbo POST
+localhost:3001/reserva
+  {
+    "id_reserva": "1",
+    "personas": "3",
+    "ninos": "0",
+    "total": "350000",
+    "cliente_cedula": "22222",
+    "paquete_codigo": "1"
+  }
+
+Para ver una Reserva por em verbo GET
+localhost:3001/reserva/id_reserva
+
+Para Editar una Reserva por em verbo PUT
+localhost:3001/reserva/id_reserva
+
+Para Eliminar una Reserva por em verbo DELETE
+localhost:3001/reserva/id_reserva
+
+**************************************************************************************************
+TOKEN
+**************************************************************************************************
+Para asignar un token a un usuario ya existente
+Para agregar un token al cliente por el verbo POST
+localhost:3001/cliente/token
+    {
+        "cedula": "11111"
+    }
+
+Esto generará un token automático para el cliente con esta cédula

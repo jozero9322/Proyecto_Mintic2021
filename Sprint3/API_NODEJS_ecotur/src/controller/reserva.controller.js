@@ -32,8 +32,8 @@ reservaCtrl.createReserva = async (req, res) => {
             personas: req.body.personas,
             ninos: req.body.ninos,
             total: req.body.total,
-            cliente: req.body.cliente,
-            paquete: req.body.paquete,
+            cliente_cedula: req.body.cliente_cedula,
+            paquete_codigo: req.body.paquete_codigo,
         };
         
         let nuevaReserva = new modelReserva(reservaTemp);
@@ -52,8 +52,8 @@ reservaCtrl.editReserva = async (req,res) => {
             personas: req.body.personas,
             ninos: req.body.ninos,
             total: req.body.total,
-            cliente: req.body.cliente,
-            paquete: req.body.paquete
+            cliente_cedula: req.body.cliente_cedula,
+            paquete_codigo: req.body.paquete_codigo
         };
         
         await modelReserva.updateOne({id_reserva:req.params.id_reserva},reservaTemp);

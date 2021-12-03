@@ -1,5 +1,7 @@
 const clienteCtrl = {};
 const modelCliente = require('../model/cliente.model');
+const jwt = require('jsonwebtoken');
+
 
 // Get all Clients
 clienteCtrl.getClientes = async (req, res) => {
@@ -14,6 +16,7 @@ clienteCtrl.getClientes = async (req, res) => {
 
 // Get only one Client
 clienteCtrl.getCliente = async (req, res) => {
+    
     try {
         const cliente = await modelCliente.findOne({cedula:req.params.cedula});
         if(cliente.legth == 0){
@@ -35,6 +38,7 @@ clienteCtrl.createCliente = async (req, res) => {
             nombre: req.body.nombre,
             usuario: req.body.usuario,
             password:req.body.password,
+            token: "",
         };
         let nuevoCliente = new modelCliente(clientTemp);
         await nuevoCliente.save();
@@ -53,6 +57,7 @@ clienteCtrl.editCliente = async (req, res) => {
             nombre: req.body.nombre,
             usuario: req.body.usuario,
             password: req.body.password,
+            token: "",
         };
         await modelCliente.updateOne({cedula:req.params.cedula},clientTemp);
         res.status(201).send("El cliente se ha actualizado");
@@ -71,6 +76,34 @@ clienteCtrl.deleteCliente = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(400).send("Ocurrio un error en la operación");
+    }
+};
+
+// Token
+clienteCtrl.token = async (req, res) => {
+    
+    try {
+        const {cedula} = req.body;
+        
+        if(!(cedula)){
+            res.status(400).send("La cédula es requerida");
+        }
+        const cliente_verify = await modelCliente.findOne({cedula:cedula});
+        if (cliente_verify){
+            // usamos una funcion de jsonwebtoken la cual recibe tres parámetros
+            // para generar el token.
+            // parametro 1: asigno en la varible user_id el valor del id (de la BD) del cliente que me envian
+            // parametro 2: clave privada interna del sistema la cual es un String. (.ENV)
+            // parametro 3: la duración del token
+            const token = jwt.sign({user_id: cliente_verify._id, cedula}, process.env.TOKEN_KEY,{expiresIn:"24h"});
+            await modelCliente.updateOne({cedula:cedula},{token: token});
+            res.status(201).json(token);
+        }
+        res.status(400).send("Credenciales inválidas");
+        
+    } catch (error) {
+        console.log(error);
+        res.send("Ocurrio un erro al generar el token");
     }
 };
 

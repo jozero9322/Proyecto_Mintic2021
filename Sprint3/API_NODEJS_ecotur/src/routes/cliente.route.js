@@ -21,13 +21,14 @@ router.put('/cliente/:cedula',editCliente);
 router.delete('/cliente/:cedula',deleteCliente);
 
 // This route is to generate one token.
-// You need to send on the body {"cedula":"22222"}
+router.post('/cliente/token',token);
+// You need to send on the body {"cedula":"22222"} 
 /*
     {
         "cedula":"22222"
     }
 */
-router.post('/cliente/token',token);
+
 
 
 // Exports this constant to be used in server.js

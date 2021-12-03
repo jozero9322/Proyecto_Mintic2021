@@ -70,11 +70,24 @@ localhost:3001/reserva/id_reserva
 **************************************************************************************************
 TOKEN
 **************************************************************************************************
-Para asignar un token a un usuario ya existente
-Para agregar un token al cliente por el verbo POST
-localhost:3001/cliente/token
+Para asignar un token a un usuario ya existente debo colocar por en body el
+siguiente json
+ verbo POST => localhost:3001/cliente/token
     {
         "cedula": "11111"
     }
 
-Esto generará un token automático para el cliente con esta cédula
+Esto generará un token automático para el cliente con esta cédula.
+
+Luego si quiero verificar que el token del usuario esta válido se debe
+enviar por la ruta http el numero de cedula y por el body un json con el 
+token.
+
+Ejemplo:
+por la ruta
+GET => localhost:3001/cliente/11111
+JSON =>
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjFhOThlZmY1YjFjZWI2ODljYWI4ZjgxIiwiY2VkdWxhIjoiMTExMTEiLCJpYXQiOjE2Mzg1MDM1OTIsImV4cCI6MTYzODU4OTk5Mn0._bl5YNqUJrPjBBTYqzQ88kS7MgYJ8M9DdfPJ4fYKDcE"
+
+  }

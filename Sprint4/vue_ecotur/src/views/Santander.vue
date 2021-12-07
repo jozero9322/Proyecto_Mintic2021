@@ -5,7 +5,7 @@
       <div>
         <h2>¿Qué actividades se pueden desarrollar en Santander?</h2>
 
-        <img id="img" src="" alt="imagen" />
+        <img id="img" src="@/assets/barichara.jpg" alt="imagen" />
         <div>
           Santander te ofrece la oportunidad de conectarte con la naturaleza de una
           manera magica, puedes conocer su capital Bucaramanga y los municipios 
@@ -16,6 +16,13 @@
    
   </main>
 </template>
+
+<script>
+export default {
+  
+}
+</script>
+
 
 <style  scoped>
 body {

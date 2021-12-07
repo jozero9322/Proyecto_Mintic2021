@@ -1,9 +1,9 @@
 <template>
 <div>
-    <h1>Gestion de Paquetes</h1>
+
     <div class="contenedor">
         <div>
-            <h3>Registrar Paquetes</h3>
+            <h3>Crear Paquetes</h3>
             <form class="formulario__registro" action="#">
 
                 <label class="formulario__registro-inputs" for="codigo">Código</label>
@@ -29,6 +29,7 @@
             <div class="formulario-botones">  
                 <button type="button" @click="limpiar">Limpiar</button>
                 <button type="button" @click="agregarPaquete">Crear Paquete</button>
+
             </div>
         </div>
         <div class="contenedor__listado">
@@ -74,11 +75,50 @@ export default {
     data: function(){
         return {
             allPackages: [],
+            picked:"",
+            ver: "",
+            agregar: "",
+            editar: "",
+            eliminar: "",
         }
 
 
     },
     methods: {
+
+
+
+
+        editarPaq(){
+            this.limpiar();
+            document.getElementById('codigo').disable = false;
+            document.getElementById('nombre_pac').disabled = true;
+            document.getElementById('descripcion').disabled = true;
+            document.getElementById('precio').disabled = true;
+            document.getElementById('duracion').disabled = true;
+            document.getElementById('salida').disabled = true;
+            this.picked = "Editar"
+            this.ver = false;
+            this.agregar = false;
+            this.editar = true;
+            this.eliminar = false;
+        },
+
+        eliminarPaq(){
+            this.limpiar();
+            document.getElementById('codigo').disable = false;
+            document.getElementById('nombre_pac').disabled = true;
+            document.getElementById('descripcion').disabled = true;
+            document.getElementById('precio').disabled = true;
+            document.getElementById('duracion').disabled = true;
+            document.getElementById('salida').disabled = true;
+            this.picked = "Eliminar"
+            this.ver = false;
+            this.agregar = false;
+            this.editar = false;
+            this.eliminar = true;
+        },
+
         async agregarPaquete(){
             const _codigo = document.getElementById('codigo').value;
             const _nombre_pac = document.getElementById('nombre_pac').value;
@@ -111,11 +151,8 @@ export default {
     async mounted(){
 
         const resp = await api.getAll("paquetes");
-        console.log(resp);
-        console.log(resp.data[0]);
         this.allPackages = resp.data;
     },
-
 
 }
 
@@ -126,7 +163,7 @@ export default {
 <style scoped>
 .contenedor{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1.5fr;
 }
 .formulario__registro{
     display: grid;
@@ -134,7 +171,7 @@ export default {
     background-color: rgb(213, 211, 208);
     padding: 10px;
     border-radius: 5px;
-    margin-left: 20px;
+    margin-left: 40px;
 
 }
 .formulario__registro-inputs{
@@ -145,7 +182,7 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 .contenedor__listado {
     align-items: center;

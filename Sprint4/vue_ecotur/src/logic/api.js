@@ -9,9 +9,22 @@ export default {
         const aux = `${API}/${subdir}`;
         return axios.get(aux);
     },
+    getOne(subdir){
+        const aux = `${API}/${subdir}`;
+        return axios.get(aux);
+    },
+
     create(subdir, objeto){
         const aux = `${API}/${subdir}`;
         return axios.post(aux,objeto);
-    }
+    },
+    edit(subdir,objeto){
+        const aux = `${API}/${subdir}`;
+        return axios.put(aux,objeto);
+    },
+    delete(subdir){
+        const aux = `${API}/${subdir}`;
+        return axios.delete(aux);
+    },
 
 };

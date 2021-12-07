@@ -1,6 +1,8 @@
 <template>
 <div>
+    <Navegacion/>
     <h1>Gestion de Reservas</h1>
+
     <div class="contenedor">
         <div>
             <h3>Registro de Reservas</h3>
@@ -29,12 +31,17 @@
 
 <script>
 import api from "@/logic/api.js";
+import Navegacion from "@/components/Navegacion"
 
 export default {
     data: function (){
         return{
             allPackages:[],
         }
+    },
+    components:{
+        Navegacion,
+
     },
     async mounted(){
 

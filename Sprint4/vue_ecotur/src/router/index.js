@@ -6,7 +6,7 @@ import Paquetes from "../views/Paquetes.vue";
 import Index from "../views/Index.vue";
 import Cundinamarca from "../views/Cundinamarca.vue";
 import Listado from "../views/Listado.vue";
-
+import Boyaca from "../views/Boyaca.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +15,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/Boyaca",
+    name: "Boyaca",
+    component: Boyaca,
   },
   {
     path: "/login",

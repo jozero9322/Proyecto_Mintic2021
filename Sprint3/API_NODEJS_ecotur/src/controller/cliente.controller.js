@@ -15,6 +15,8 @@ clienteCtrl.getClientes = async (req, res) => {
 };
 
 // Get only one Client
+// este metodo es para encontrar el cliente por cedula
+/*
 clienteCtrl.getCliente = async (req, res) => {
     
     try {
@@ -29,6 +31,29 @@ clienteCtrl.getCliente = async (req, res) => {
         res.status(400).send("Ocurrio un error en la operación");
     }
 };
+*/
+
+// este metodo es para buscar al cliente por usuario y password
+clienteCtrl.getCliente = async (req, res) => {
+    
+    try {
+        const {usuario, password} = req.body;
+        const buscarUsuario = await modelCliente.findOne({usuario:usuario});
+        if(buscarUsuario && password === buscarUsuario.password){
+
+            res.status(200).json(buscarUsuario);
+
+        } else {
+            res.send("El Usuario o el Password son incorrectos");
+        }
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).send("Ocurrio un error en la operación");
+    }
+};
+
 
 // Create a new Client
 clienteCtrl.createCliente = async (req, res) => {

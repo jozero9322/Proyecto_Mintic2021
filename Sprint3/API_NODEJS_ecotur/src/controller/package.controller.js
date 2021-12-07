@@ -33,7 +33,7 @@ packageCtrl.createPaquete = async (req, res) => {
         const paqueteTemp = {
             codigo: req.body.codigo,
             nombre_pac: req.body.nombre_pac,
-            ubicacion: req.body.ubicacion,
+            descripcion: req.body.descripcion,
             precio: req.body.precio,
             duracion: req.body.duracion,
             salida: req.body.salida,
@@ -53,7 +53,7 @@ packageCtrl.editPaquete = async (req, res) => {
         const paqueteTemp = {
             codigo: req.body.codigo,
             nombre_pac: req.body.nombre_pac,
-            ubicacion: req.body.ubicacion,
+            descripcion: req.body.descripcion,
             precio: req.body.precio,
             duracion: req.body.duracion,
             salida: req.body.salida,

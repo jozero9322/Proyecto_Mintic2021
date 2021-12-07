@@ -29,7 +29,7 @@ localhost:3001/paquete
   {
     "codigo": "1",
     "nombre_pac": "Eje Cafetero",
-    "ubicacion": "Eje Cafetero",
+    "descripcion": "Eje Cafetero",
     "precio": "320000",
     "duracion": "3 dias",
     "salida": "Sabado"

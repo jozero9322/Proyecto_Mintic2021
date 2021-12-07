@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Paquetes from "../views/Paquetes.vue";
+import Reservas from "../views/Reservas.vue";
 import Index from "../views/Index.vue";
 import Cundinamarca from "../views/Cundinamarca.vue";
 import Listado from "../views/Listado.vue";
@@ -10,6 +11,7 @@ import Boyaca from "../views/Boyaca.vue";
 import Caldas from "../views/Caldas.vue";
 import Cliente from "../views/Cliente.vue";
 import Costa from "../views/Costa.vue";
+import Santander from "../views/Santander.vue";
 
 Vue.use(VueRouter);
 
@@ -40,6 +42,11 @@ const routes = [
     component: Costa,
   },
   {
+    path: "/santander",
+    name: "Santander",
+    component: Santander,
+  },
+  {
     path: "/login",
     name: "Login",
     component: Login,
@@ -49,8 +56,13 @@ const routes = [
     name: "Paquetes",
     component: Paquetes,
   },
+  {
+    path: "/reservas",
+    name: "Reservas",
+    component: Reservas,
+  },
 
-   {
+  {
     path: "/index",
     name: "index",
     component: Index,

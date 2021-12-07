@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Paquetes from "../views/Paquetes.vue";
+import Boyaca from "../views/Boyaca.vue";
 
 Vue.use(VueRouter);
 
@@ -11,6 +12,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/Boyaca",
+    name: "Boyaca",
+    component: Boyaca,
   },
   {
     path: "/login",

@@ -1,7 +1,7 @@
 <template>
   <div class="Login-form">
     <Navegacion />
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+
     <h1>Inicio de Sesion</h1>
     <form action class="form">
       <label class="form-label" for="#Usuario">Usuario:</label>
@@ -19,24 +19,54 @@
         id="Contraseña"
         placeholder="Contraseña"
       />
-      <input class="form-submit" type="submit" value="Login" />
+      <button>ingresar</button>
+      <p class="message">
+        No esta registrado? <a href="#">Crear una cuenta</a>
+      </p>
     </form>
   </div>
 </template>
 
 <style scoped>
 .form {
-  width: 30%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  border-radius: 5px;
-  line-height: 20pt;
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form {
-  background-color: rgba(0, 128, 0, 0.404);
+.form input {
+  font-family: "Arial", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Arial", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  background: #4caf50;
+}
+
+.Login-form {
+  background-image: url("../assets/Fondo.jpg");
+  size-adjust: flex;
 }
 </style>
 
@@ -56,5 +86,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

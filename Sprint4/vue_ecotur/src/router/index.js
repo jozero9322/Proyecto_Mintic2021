@@ -3,6 +3,10 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Paquetes from "../views/Paquetes.vue";
+import Index from "../views/Index.vue";
+import Cundinamarca from "../views/Cundinamarca.vue";
+import Listado from "../views/Listado.vue";
+
 
 Vue.use(VueRouter);
 
@@ -22,6 +26,27 @@ const routes = [
     name: "Paquetes",
     component: Paquetes,
   },
+
+   {
+    path: "/index",
+    name: "index",
+    component: Index,
+  },
+   
+   {
+    path: "/cundinamarca",
+    name: "cundinamarca",
+    component: Cundinamarca,
+  },
+    {
+    path: "/listado-paquetes",
+    name: "listado-paquetes",
+    component: Listado,
+  },
+   
+   
+   
+
   {
     path: "/about",
     name: "About",

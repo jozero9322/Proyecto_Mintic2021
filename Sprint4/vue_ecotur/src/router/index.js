@@ -4,6 +4,9 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Paquetes from "../views/Paquetes.vue";
 import Boyaca from "../views/Boyaca.vue";
+import Caldas from "../views/Caldas.vue";
+import Cliente from "../views/Cliente.vue";
+import Costa from "../views/Costa.vue";
 
 Vue.use(VueRouter);
 
@@ -17,6 +20,21 @@ const routes = [
     path: "/Boyaca",
     name: "Boyaca",
     component: Boyaca,
+  },
+  {
+    path: "/caldas",
+    name: "Caldas",
+    component: Caldas,
+  },
+  {
+    path: "/Cliente",
+    name: "Cliente",
+    component: Cliente,
+  },
+  {
+    path: "/Costa",
+    name: "Costa",
+    component: Costa,
   },
   {
     path: "/login",

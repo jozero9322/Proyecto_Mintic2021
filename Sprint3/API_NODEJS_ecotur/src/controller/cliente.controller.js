@@ -41,7 +41,7 @@ clienteCtrl.getCliente = async (req, res) => {
         const buscarUsuario = await modelCliente.findOne({usuario:usuario});
         if(buscarUsuario && password === buscarUsuario.password){
 
-            res.status(200).json(buscarUsuario);
+            res.status(201).json(buscarUsuario);
 
         } else {
             res.send("El Usuario o el Password son incorrectos");
@@ -104,7 +104,42 @@ clienteCtrl.deleteCliente = async (req, res) => {
     }
 };
 
-// Token
+// Token: este funciona con Usuario y Password
+clienteCtrl.token = async (req, res) => {
+    
+    try {
+        const {usuario, password} = req.body;
+        
+        if( !(usuario) || !(password) ){
+            res.status(400).send("El usuario y el password son requeridos");
+        } else {
+            
+            const cliente_verify = await modelCliente.findOne({usuario:usuario});
+            if (cliente_verify && cliente_verify.password === password){
+
+                // usamos una funcion de jsonwebtoken la cual recibe tres parámetros
+                // para generar el token.
+                // parametro 1: asigno en la varible user_id el valor del id (de la BD) del cliente que me envian
+                // parametro 2: clave privada interna del sistema la cual es un String. (.ENV)
+                // parametro 3: la duración del token
+                const token = jwt.sign({user_id: cliente_verify._id, usuario}, process.env.TOKEN_KEY,{expiresIn:"24h"});
+                await modelCliente.updateOne({usuario:usuario},{token: token});
+                res.status(201).json(token);
+            } else {
+
+                res.status(400).send("Credenciales inválidas");
+
+            }
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.send("Ocurrio un erro al generar el token");
+    }
+};
+
+/*
+// Token: este funciona con la cedula
 clienteCtrl.token = async (req, res) => {
     
     try {
@@ -112,24 +147,29 @@ clienteCtrl.token = async (req, res) => {
         
         if(!(cedula)){
             res.status(400).send("La cédula es requerida");
+        } else {
+
+            const cliente_verify = await modelCliente.findOne({cedula:cedula});
+            if (cliente_verify){
+                // usamos una funcion de jsonwebtoken la cual recibe tres parámetros
+                // para generar el token.
+                // parametro 1: asigno en la varible user_id el valor del id (de la BD) del cliente que me envian
+                // parametro 2: clave privada interna del sistema la cual es un String. (.ENV)
+                // parametro 3: la duración del token
+                const token = jwt.sign({user_id: cliente_verify._id, cedula}, process.env.TOKEN_KEY,{expiresIn:"24h"});
+                await modelCliente.updateOne({cedula:cedula},{token: token});
+                res.status(201).json(token);
+            } else {
+
+                res.status(400).send("Credenciales inválidas");
+
+            }
         }
-        const cliente_verify = await modelCliente.findOne({cedula:cedula});
-        if (cliente_verify){
-            // usamos una funcion de jsonwebtoken la cual recibe tres parámetros
-            // para generar el token.
-            // parametro 1: asigno en la varible user_id el valor del id (de la BD) del cliente que me envian
-            // parametro 2: clave privada interna del sistema la cual es un String. (.ENV)
-            // parametro 3: la duración del token
-            const token = jwt.sign({user_id: cliente_verify._id, cedula}, process.env.TOKEN_KEY,{expiresIn:"24h"});
-            await modelCliente.updateOne({cedula:cedula},{token: token});
-            res.status(201).json(token);
-        }
-        res.status(400).send("Credenciales inválidas");
-        
+
     } catch (error) {
         console.log(error);
         res.send("Ocurrio un erro al generar el token");
     }
 };
-
+*/
 module.exports = clienteCtrl;

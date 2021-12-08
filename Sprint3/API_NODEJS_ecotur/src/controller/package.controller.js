@@ -19,7 +19,7 @@ packageCtrl.getPaquete = async (req, res) => {
         if (paquete.length == 0){
             res.send("Este paquete no esta en la base de datos");
         } else {
-            res.status(200).json(paquete);
+            res.status(201).json(paquete);
         }
     } catch (error) {
         console.log(error);
@@ -40,7 +40,7 @@ packageCtrl.createPaquete = async (req, res) => {
         }
         let nuevoPaquete = new modelPackage(paqueteTemp);
         await nuevoPaquete.save();
-        res.status(200).send("El paquete se ha creado exitosamente");
+        res.status(201).send("El paquete se ha creado exitosamente");
     } catch (error) {
         console.log(error);
         res.status(400).send("Ocurrio un error en la operación");
@@ -59,7 +59,7 @@ packageCtrl.editPaquete = async (req, res) => {
             salida: req.body.salida,
         }
         await modelPackage.updateOne({codigo:req.params.codigo},paqueteTemp);
-        res.status(200).send("El paquete ha sido actualizado exitosamente");
+        res.status(201).send("El paquete ha sido actualizado exitosamente");
     } catch (error) {
         console.log(error);
         res.status(400).send("Ocurrio un error en la operación");

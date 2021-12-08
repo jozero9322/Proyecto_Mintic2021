@@ -9,7 +9,7 @@ import Cundinamarca from "../views/Cundinamarca.vue";
 import Listado from "../views/Listado.vue";
 import Boyaca from "../views/Boyaca.vue";
 import Caldas from "../views/Caldas.vue";
-import Clientes from "../views/Cliente.vue";
+import Clientes from "../views/Clientes.vue";
 import Costa from "../views/Costa.vue";
 import Santander from "../views/Santander.vue";
 import Cedula from "@/views/Cedula.vue";

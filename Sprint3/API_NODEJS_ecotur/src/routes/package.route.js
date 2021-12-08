@@ -4,10 +4,10 @@ const router = Router();
 // Get the methos or functions from the cotroller to be used here.
 const {getPaquetes,getPaquete,createPaquete,editPaquete,deletePaquete} = require('../controller/package.controller');
 
-// Gets all clients
+// Gets all packages
 router.get('/paquetes',getPaquetes);
 
-// Gets only one client
+// Gets only one package
 router.get('/paquete/:codigo',getPaquete);
 
 // Saves one client

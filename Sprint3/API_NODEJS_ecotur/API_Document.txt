@@ -8,7 +8,7 @@ localhost:3001/cliente
     "nombre": "Emiliano",
     "usuario": "Administrador",
     "password": "11111",
-    "token": "",
+    "token": ""
 }
 
 Para ver un cliente por em verbo GET
@@ -36,13 +36,13 @@ localhost:3001/paquete
   }
 
 Para ver un Paquete por em verbo GET
-localhost:3001/reserva/codigo
+localhost:3001/paquete/codigo
 
 Para Editar un Paquete por em verbo PUT
-localhost:3001/reserva/codigo
+localhost:3001/paquete/codigo
 
 Para Eliminar un Paquete por em verbo DELETE
-localhost:3001/reserva/codigo
+localhost:3001/paquete/codigo
 
 **************************************************************************************************
 RESERVAS

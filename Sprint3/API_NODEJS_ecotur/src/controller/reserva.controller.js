@@ -4,7 +4,7 @@ const modelReserva = require('../model/reserva.model');
 reservaCtrl.getReservas = async (req, res) => {
     try {
         const reservas = await modelReserva.find({});
-        res.status(200).json(reservas);
+        res.status(201).json(reservas);
     } catch (error) {
         console.log(error);
         res.status(400).send("Ocurrio un error en la operación");

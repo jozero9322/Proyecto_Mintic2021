@@ -7,14 +7,16 @@ const uri = process.env.DB_URI;
 
 // We use mongoose as a ODM (Object Data Model) to map the data base
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;// conesta promesa lo hago global a mi proyecto
+mongoose.Promise = global.Promise;// con esta promesa lo hago global a mi proyecto
 
 async function conectar(){
+/*
+// este try - catch lo use cuando tenia la conexion local
     try {
         //aca colóco la conexion - lo que esta en comentario es cuando quiero hacer una conexion con atlas
-        /*
-        await mongoose.connect(uri,{useNewUrlParser:true, useUnifiedTopology:true});
-        */
+        
+        // await mongoose.connect(uri,{useNewUrlParser:true, useUnifiedTopology:true});
+        
 
         //esta conexion la hago para hacerla de manera local usando promesasa
         await mongoose
@@ -26,13 +28,21 @@ async function conectar(){
     } catch (error) {
         console.log(error);
     }
+*/
+
+// este try catch usando atlas
+        try {
+            await mongoose.connect(uri,{useNewUrlParser:true, useUnifiedTopology:true});
+        } catch (error) {
+            console.log(error);
+        }
 }
 
 conectar();
 let db = mongoose.connection;
 
 db.once('open', ()=>{
-    console.log('Connected to the Data Base')
+    console.log('Connected to the Atlas Data Base')
 });
 
 module.exports = mongoose;

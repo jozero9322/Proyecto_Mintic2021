@@ -10,7 +10,7 @@ router.get('/clientes',getClientes);
 
 // Gets only one client
 //router.get('/cliente/:cedula', getCliente);
-router.get('/cliente/', getCliente);
+router.get('/cliente/',getCliente);
 
 // Saves one client
 router.post('/cliente',createCliente);

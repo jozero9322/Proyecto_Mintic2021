@@ -60,7 +60,7 @@ export default {
       ver:false,
       editar: false,
       eliminar:false,
-      render:false,
+      render:true,
 
     }
 

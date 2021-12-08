@@ -1,31 +1,80 @@
 <template>
   <div class="Login-form">
-    <Navegacion />
+
+    <NavHome/>
 
     <h1>Inicio de Sesion</h1>
     <form action class="form">
-      <label class="form-label" for="#Usuario">Usuario:</label>
-      <input
+
+      <label class="form-label" for="Usuario">Usuario:</label>
+      <input v-on:input="entrada_usuario = $event.target.value"
         class="form-input"
         type="Usuario"
-        id="Usuario"
+        id="usuario"
         required
         placeholder="Usuario"
       />
-      <label class="form-label" for="#Contraseña">Contraseña:</label>
-      <input
+      <label class="form-label" for="Contraseña">Contraseña:</label>
+      <input v-on:input="entrada_contrasena = $event.target.value"
         class="form-input"
-        type="Contraseña"
-        id="Contraseña"
+        type="password"
+        id="contrasena"
         placeholder="Contraseña"
       />
-      <button>ingresar</button>
+      <button type="button" @click="verificar">ingresar</button>
       <p class="message">
         No esta registrado? <a href="#">Crear una cuenta</a>
       </p>
+
     </form>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+
+import NavHome from "@/components/NavHome";
+
+import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js";
+
+export default {
+  name: "Login",
+  components: {
+    NavHome,
+  },
+  data: function () {
+    return {
+      entrada_usuario:'',
+      entrada_contrasena: '',
+    }
+  },
+  methods: {
+    async verificar(){
+      try {
+        let obj_temp ={usuario: this.entrada_usuario,password:this.entrada_contrasena}
+        let respuesta = await api.token(obj_temp);
+        auth.createToken(respuesta.data);
+        alert("Bienvenido " + this.entrada_usuario);
+        document.getElementById('usuario').value = "";
+        document.getElementById('contrasena').value = "";
+        if (this.entrada_usuario === 'Administrador'){
+          this.enrrutator('/reservas');
+        } else {
+          this.enrrutator('/cliente');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    enrrutator(dato){
+      this.$router.push(dato);
+    }
+    
+  },
+
+};
+</script>
 
 <style scoped>
 .form {
@@ -70,20 +119,4 @@
 }
 </style>
 
-<script>
-// @ is an alias to /src
 
-import Navegacion from "@/components/Navegacion";
-
-export default {
-  name: "Login",
-  components: {
-    Navegacion,
-  },
-  data: function () {
-    return {}
-  },
-  methods: {},
-
-};
-</script>

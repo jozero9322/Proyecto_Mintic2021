@@ -23,7 +23,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/Boyaca",
+    path: "/boyaca",
     name: "Boyaca",
     component: Boyaca,
   },
@@ -33,12 +33,12 @@ const routes = [
     component: Caldas,
   },
   {
-    path: "/Cliente",
+    path: "/cliente",
     name: "Cliente",
     component: Cliente,
   },
   {
-    path: "/Costa",
+    path: "/costa",
     name: "Costa",
     component: Costa,
   },

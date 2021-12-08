@@ -1,15 +1,15 @@
 const autho = {}
 
 autho.createToken = (tken) => {
-    localStorage.setItem('miappkey',tken);
+    localStorage.setItem('ecoturismo',tken);
 }
 
 autho.getToken = () => {
-    return localStorage.getItem('miappkey');
+    return localStorage.getItem('ecoturismo');
 }
 
 autho.isToken = () => {
-    if ( localStorage.getItem('miappkey') ) {
+    if ( localStorage.getItem('ecoturismo') ) {
         return true;
     } else {
         return false;

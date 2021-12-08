@@ -25,10 +25,10 @@ export default {
         const aux = `${API}/${subdir}`;
         return axios.delete(aux);
     },
-    token(param){
+    token(objeto){
         // http://dominio/cliente/token
         const aux = `${API}/cliente/token`;
-        return axios.post(aux, param);
+        return axios.post(aux, objeto);
     },
 
 };

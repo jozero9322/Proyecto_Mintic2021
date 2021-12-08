@@ -107,8 +107,8 @@ export default {
             document.getElementById('paquete_codigo').value = "";
         },
         async actualiza(){
-            const resp = await api.getAll("paquetes");
-            this.allPackages = resp.data;
+            const resp = await api.getAll("reservas");
+            this.allReservations = resp.data;
     }
 
     },

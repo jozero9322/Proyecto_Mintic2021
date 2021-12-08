@@ -24,8 +24,8 @@
 
     <ReserCrear v-if="crear"/>
     <ReserVer v-if="ver" />
-    <PaqueEditar v-if="editar" />
-    <PaqueEliminar v-if="eliminar" />
+    <ReserEditar v-if="editar" />
+    <ReserEliminar v-if="eliminar" />
 
      
   </div>
@@ -37,8 +37,8 @@
 import Navegacion from "@/components/Navegacion"
 import ReserCrear from "@/components/ReserCrear"
 import ReserVer from "@/components/ReserVer"
-import PaqueEditar from "@/components/PaqueEditar"
-import PaqueEliminar from "@/components/PaqueEliminar"
+import ReserEditar from "@/components/ReserEditar"
+import ReserEliminar from "@/components/ReserEliminar"
 
 
 export default {
@@ -47,8 +47,8 @@ export default {
    Navegacion,
    ReserCrear,
    ReserVer,
-   PaqueEditar,
-   PaqueEliminar,
+   ReserEditar,
+   ReserEliminar,
   },
   data:function(){
 

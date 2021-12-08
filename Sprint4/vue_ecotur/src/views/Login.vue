@@ -80,9 +80,10 @@ export default {
   components: {
     Navegacion,
   },
-  methods: {},
   data: function () {
-    return {};
+    return {}
   },
+  methods: {},
+
 };
 </script>

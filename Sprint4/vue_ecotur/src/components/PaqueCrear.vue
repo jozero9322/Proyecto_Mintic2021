@@ -86,39 +86,6 @@ export default {
     },
     methods: {
 
-
-
-
-        editarPaq(){
-            this.limpiar();
-            document.getElementById('codigo').disable = false;
-            document.getElementById('nombre_pac').disabled = true;
-            document.getElementById('descripcion').disabled = true;
-            document.getElementById('precio').disabled = true;
-            document.getElementById('duracion').disabled = true;
-            document.getElementById('salida').disabled = true;
-            this.picked = "Editar"
-            this.ver = false;
-            this.agregar = false;
-            this.editar = true;
-            this.eliminar = false;
-        },
-
-        eliminarPaq(){
-            this.limpiar();
-            document.getElementById('codigo').disable = false;
-            document.getElementById('nombre_pac').disabled = true;
-            document.getElementById('descripcion').disabled = true;
-            document.getElementById('precio').disabled = true;
-            document.getElementById('duracion').disabled = true;
-            document.getElementById('salida').disabled = true;
-            this.picked = "Eliminar"
-            this.ver = false;
-            this.agregar = false;
-            this.editar = false;
-            this.eliminar = true;
-        },
-
         async agregarPaquete(){
             const _codigo = document.getElementById('codigo').value;
             const _nombre_pac = document.getElementById('nombre_pac').value;

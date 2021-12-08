@@ -2,10 +2,11 @@
   <div >
     
     <Navegacion/>
+    <Alert texto="token Expiro" v-if="!render"/>
 
     <h1>Gestion de Paquetes</h1>
       <div>
-      <fieldset >
+      <fieldset v-if="render" >
           <label for="">
               <input v-on:click="verPaq" type="radio" name="paquete" value="Ver">Ver Paquetes
           </label>
@@ -39,6 +40,7 @@ import PaqueCrear from "@/components/PaqueCrear"
 import PaqueVer from "@/components/PaqueVer"
 import PaqueEditar from "@/components/PaqueEditar"
 import PaqueEliminar from "@/components/PaqueEliminar"
+import Alert from "@/components/Alert.vue";
 
 
 export default {
@@ -49,6 +51,7 @@ export default {
    PaqueVer,
    PaqueEditar,
    PaqueEliminar,
+   Alert,
   },
   data:function(){
 
@@ -57,6 +60,7 @@ export default {
       ver:false,
       editar: false,
       eliminar:false,
+      render:false,
 
     }
 

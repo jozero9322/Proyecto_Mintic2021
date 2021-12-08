@@ -13,7 +13,6 @@ export default {
         const aux = `${API}/${subdir}`;
         return axios.get(aux);
     },
-
     create(subdir, objeto){
         const aux = `${API}/${subdir}`;
         return axios.post(aux,objeto);
@@ -25,6 +24,11 @@ export default {
     delete(subdir){
         const aux = `${API}/${subdir}`;
         return axios.delete(aux);
+    },
+    token(param){
+        // http://dominio/cliente/token
+        const aux = `${API}/cliente/token`;
+        return axios.post(aux, param);
     },
 
 };

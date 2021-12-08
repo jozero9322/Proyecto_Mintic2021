@@ -1,10 +1,10 @@
 <template>
   <nav class="navegacion">
-    <li>Inicio de Sesion</li>
-    <li>Acerca de Nosotros</li>
-    <li>Paquetes</li>
-    <li>Reserva</li>
-    <li>Cerrar Sesion</li>
+    
+    <li><router-link to="/login">Inicio de Sesión</router-link></li>
+    <li><router-link to="/paquetes">Paquetes</router-link></li>
+    <li><router-link to="/reservas">Reservas</router-link></li>
+    <li><router-link to="/">Cerrar Sesión</router-link></li>
   </nav>
 </template>
 

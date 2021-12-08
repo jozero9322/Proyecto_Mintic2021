@@ -9,10 +9,11 @@ import Cundinamarca from "../views/Cundinamarca.vue";
 import Listado from "../views/Listado.vue";
 import Boyaca from "../views/Boyaca.vue";
 import Caldas from "../views/Caldas.vue";
-import Cliente from "../views/Cliente.vue";
+import Clientes from "../views/Cliente.vue";
 import Costa from "../views/Costa.vue";
 import Santander from "../views/Santander.vue";
 import Cedula from "@/views/Cedula.vue";
+import ComprasCliente from "@/views/ComprasCliente.vue";
 
 Vue.use(VueRouter);
 
@@ -33,9 +34,9 @@ const routes = [
     component: Caldas,
   },
   {
-    path: "/cliente",
-    name: "Cliente",
-    component: Cliente,
+    path: "/clientes",
+    name: "Clientes",
+    component: Clientes,
   },
   {
     path: "/costa",
@@ -53,6 +54,11 @@ const routes = [
     component: Login,
   },
   {
+    path: "/compras_cliente",
+    name: "ComprasCliente",
+    component: ComprasCliente,
+  },
+  {
     path: "/paquetes",
     name: "Paquetes",
     component: Paquetes,
@@ -65,7 +71,7 @@ const routes = [
 
   {
     path: "/index",
-    name: "index",
+    name: "Index",
     component: Index,
   },
    

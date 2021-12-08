@@ -1,5 +1,6 @@
 <template>
   <main>
+    <NavPaquetes/>
     <section>
       <h1>ECOTURISMO SANTANDER</h1>
       <div>
@@ -18,7 +19,12 @@
 </template>
 
 <script>
+import NavPaquetes from "@/components/NavPaquetes"
 export default {
+  name:"Santander",
+  components:{
+    NavPaquetes,
+  }
   
 }
 </script>

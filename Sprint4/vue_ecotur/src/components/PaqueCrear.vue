@@ -75,11 +75,7 @@ export default {
     data: function(){
         return {
             allPackages: [],
-            picked:"",
-            ver: "",
-            agregar: "",
-            editar: "",
-            eliminar: "",
+
         }
 
 
@@ -117,8 +113,9 @@ export default {
     },
     async mounted(){
 
-        const resp = await api.getAll("paquetes");
-        this.allPackages = resp.data;
+        const respPaq = await api.getAll("paquetes");
+        this.allPackages = respPaq.data;
+
     },
 
 }

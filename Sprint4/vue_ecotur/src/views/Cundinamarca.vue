@@ -1,6 +1,6 @@
 <template>
   <main>
-    <Navegacion />
+    <NavPaquetes/>
     <br />
     <section>
       <h1>ECOTURISMO CUNDINAMARCA</h1>
@@ -76,12 +76,12 @@ body {
 <script>
 // @ is an alias to /src
 
-import Navegacion from "@/components/Navegacion";
+import NavPaquetes from "@/components/NavPaquetes";
 
 export default {
   name: "Cundinamarca",
   components: {
-    Navegacion,
+    NavPaquetes,
   },
   methods: {},
   data: function () {

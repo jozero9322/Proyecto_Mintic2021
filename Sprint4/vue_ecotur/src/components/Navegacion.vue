@@ -4,6 +4,7 @@
     <li><router-link to="/login">Inicio de Sesión</router-link></li>
     <li><router-link to="/paquetes">Paquetes</router-link></li>
     <li><router-link to="/reservas">Reservas</router-link></li>
+    <li><router-link to="/clientes">Clientes</router-link></li>
     <li><router-link to="/index">Cerrar Sesión</router-link></li>
   </nav>
 </template>

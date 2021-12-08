@@ -38,23 +38,23 @@
             <table border="1">
               <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Personas</th>
-                        <th>Niños</th>
-                        <th>Total</th>
-                        <th>Cedula Cliente</th>
-                        <th>Codigo Paquete</th>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Descripci'n</th>
+                        <th>Predio</th>
+                        <th>Duración</th>
+                        <th>Salida</th>
                     </tr>
                 </thead>
 
                 <tbody >
-                    <tr v-for="eachPackage in allReservations" :key="eachPackage">
-                        <td>{{eachPackage.id_reserva}}</td>
-                        <td>{{eachPackage.personas}}</td>
-                        <td>{{eachPackage.ninos}}</td>
-                        <td>{{eachPackage.total}}</td>
-                        <td>{{eachPackage.cliente_cedula}}</td>
-                        <td>{{eachPackage.paquete_codigo}}</td>
+                    <tr v-for="eachPackage in allPackages" :key="eachPackage">
+                        <td>{{eachPackage.codigo}}</td>
+                        <td>{{eachPackage.nombre_pac}}</td>
+                        <td>{{eachPackage.descripcion}}</td>
+                        <td>{{eachPackage.precio}}</td>
+                        <td>{{eachPackage.duracion}}</td>
+                        <td>{{eachPackage.salida}}</td>
                         
                     </tr>        
                 </tbody>
@@ -75,6 +75,7 @@ export default {
     data: function(){
         return {
             allReservations: [],
+            allPackages: [],
         }
 
 
@@ -94,6 +95,7 @@ export default {
                 console.log("hola");
                 await api.create("reserva",{id_reserva:_idReserva, personas:_personas, ninos: _ninos, total: _total, cliente_cedula:_clienteCedula, paquete_codigo:_paqueteCodigo});
                 this.actualiza();
+                this.limpiar();
             } else {
                 alert('Ingrese todos los datos');
             }         
@@ -116,6 +118,9 @@ export default {
 
         const resp = await api.getAll("reservas");
         this.allReservations = resp.data;
+        document.getElementById('id_reserva').value = (this.allReservations.length) + 1;
+        const resp2 = await api.getAll("paquetes");
+        this.allPackages = resp2.data;
     },
 
 }

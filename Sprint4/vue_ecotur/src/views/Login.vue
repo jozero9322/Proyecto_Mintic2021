@@ -61,7 +61,7 @@ export default {
         if (this.entrada_usuario === 'Administrador'){
           this.enrrutator('/reservas');
         } else {
-          this.enrrutator('/cliente');
+          this.enrrutator('/compras_cliente');
         }
       } catch (error) {
         console.log(error);

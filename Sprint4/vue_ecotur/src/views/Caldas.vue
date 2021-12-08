@@ -1,5 +1,6 @@
 <template>
    <div>
+         <NavPaquetes/>
     <h1>Ecoturismo En Colombia</h1>
 
     <h2>ECOTURISMO EN CALDAS</h2>
@@ -12,12 +13,12 @@
 
 <script>
 // @ is an alias to /src
-
+import NavPaquetes from "@/components/NavPaquetes"
 
 export default {
   name: "Caldas",
   components: {
-   
+    NavPaquetes,
   },
 };
 </script>

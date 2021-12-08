@@ -1,59 +1,60 @@
 <template>
   <div>
-    <div>
-      <h1>Listado de Paquetes</h1>
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Ubicacion</th>
-            <th>Precio</th>
-            <th>Duracion</th>
-            <th>Salida</th>
-          </tr>
-        </thead>
-        <tbody id="datos_paquete">
-          <tr v-for="unPaquete in listaPaquetes" :key="unPaquete">
-            <td>{{ unPaquete.nombre }}</td>
-            <td>{{ unPaquete.ubicacion }}</td>
-            <td>{{ unPaquete.precio }}</td>
-            <td>{{ unPaquete.duracion }}</td>
-            <td>{{ unPaquete.salida }}</td>
-          </tr>
-        </tbody>
-      </table>
+    <PaqueVer/>
+
+    <div class="contenedor">
+        <label class="labels" for="">Vista el detalle del paquete en Santander</label>
+        <router-link class="labels" to="/santander">Santander</router-link>
+
+        <label class="labels" for="">Vista el detalle del paquete en Cundinamarca</label>
+        <router-link class="labels" to="/cundinamarca">Cundinamarca</router-link>
+
+        <label class="labels" for="">Vista el detalle del paquete en Costa</label>
+        <router-link class="labels" to="/costa">Costa</router-link>
+
+        <label  class="labels" for="">Vista el detalle del paquete en Boyaca</label>
+        <router-link  class="labels" to="/boyaca">Boyaca</router-link>
+
+        <label class="labels" for="">Vista el detalle del paquete en Caldas</label>
+        <router-link class="labels" to="/caldas">Caldas</router-link>
+    </div>
+
+    <div >
+      <router-link class="comprar" to="/compras_cliente">Ir a comprar</router-link>
+      <label class="comprar" for=""></label>
     </div>
   </div>
 </template>
 
+<script>
+import PaqueVer from "@/components/PaqueVer"
+export default {
+  name:"ListadoPaquetes",
+  components:{
+    PaqueVer,
+  }
+}
+</script>
+
 <style scoped>
-table {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-  border: 3px solid rgb(0, 136, 30);
-}
+.contenedor {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 40px;
 
-thead th:nth-child(1) {
-  width: 30%;
 }
-
-thead th:nth-child(2) {
-  width: 20%;
+.labels {
+   padding: 10px;
 }
+.comprar {
+  width:400px;
+  height: 500px;
+  background-color: red;
+  font-size: 20px;
 
-thead th:nth-child(3) {
-  width: 15%;
-}
-
-thead th:nth-child(4) {
-  width: 35%;
-}
-
-th,
-td {
-  padding: 20px;
 }
 </style>
 
-<script></script>
+

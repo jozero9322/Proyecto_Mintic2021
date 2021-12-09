@@ -9,6 +9,11 @@
                 <label class="formulario__registro-inputs" for="id_reserva">Id Reserva</label>
                 <input class="formulario__registro-inputs" required type="text" placeholder="ID Reserva" id="id_reserva">
 
+                <label class="formulario__registro-inputs" for="cliente_cedula">Cedula Cliente</label>
+                <input class="formulario__registro-inputs" required type="text" placeholder="Cedula del Cliente" id="cliente_cedula">
+
+                <label class="formulario__registro-inputs" for="paquete_codigo">Codigo Paquete</label>
+                <input class="formulario__registro-inputs" required type="text" placeholder="Codigo el Paquete" id="paquete_codigo">
                 <label class="formulario__registro-inputs" for="personas">Personas Adultas</label>
                 <input class="formulario__registro-inputs" required type="text" placeholder="Adultos" id="personas">
 
@@ -18,11 +23,7 @@
                 <label class="formulario__registro-inputs" for="total">Total ($)</label>
                 <input class="formulario__registro-inputs" required type="text" placeholder="Total" id="total">
 
-                <label class="formulario__registro-inputs" for="cliente_cedula">Cedula Cliente</label>
-                <input class="formulario__registro-inputs" required type="text" placeholder="Cedula del Cliente" id="cliente_cedula">
 
-                <label class="formulario__registro-inputs" for="paquete_codigo">Codigo Paquete</label>
-                <input class="formulario__registro-inputs" required type="text" placeholder="Codigo el Paquete" id="paquete_codigo">
 
 
             </form>
@@ -40,7 +41,7 @@
                     <tr>
                         <th>Código</th>
                         <th>Nombre</th>
-                        <th>Descripci'n</th>
+                        <th>Descripción</th>
                         <th>Predio</th>
                         <th>Duración</th>
                         <th>Salida</th>

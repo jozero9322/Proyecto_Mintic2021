@@ -8,7 +8,7 @@ export default {
     // porque lo que se va a enviar el es token y no queremos el token quede expuesto en la url.
     getAll(subdir, objeto){
         const aux = `${API}/${subdir}`;
-        return axios.post(aux,objeto);
+        return axios.post(aux, objeto);
     },
     getOne(subdir, objeto){
         const aux = `${API}/${subdir}`;
@@ -22,9 +22,9 @@ export default {
         const aux = `${API}/${subdir}`;
         return axios.put(aux,objeto);
     },
-    delete(subdir, objeto){
+    delete(subdir){
         const aux = `${API}/${subdir}`;
-        return axios.post(aux, objeto);
+        return axios.delete(aux);
     },
     token(objeto){
         // esta funcion es para obtener el token del cliente en la base de datos

@@ -83,7 +83,7 @@ export default {
 
 
             if ( _cedula != "" && _nombre != "" && _usuario != "" && _password != "" ) {
-                await api.create("cliente",{cedula: _cedula, nombre: _nombre, usuario: _usuario, password: _password, token:auth.getToken()});
+                await api.create("cliente",{cedula: _cedula, nombre: _nombre, usuario: _usuario, password: _password});
                 this.actualiza();
                 this.limpiar();
             } else {
@@ -97,6 +97,7 @@ export default {
             document.getElementById('password').value = "";
         },
         async actualiza(){
+            //const resp = await api.getAll("clientes");
             const resp = await api.getAll("clientes",{token:auth.getToken()});
             this.allClients = resp.data;
     }
@@ -104,6 +105,7 @@ export default {
     },
     async mounted(){
 
+        //const respPaq = await api.getAll("clientes");
         const respPaq = await api.getAll("clientes",{token:auth.getToken()});
         this.allClients = respPaq.data;
 

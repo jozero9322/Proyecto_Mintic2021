@@ -51,6 +51,8 @@ export default {
     async mounted(){
 
         const resp = await api.getAll("clientes",{token: auth.getToken()});
+        //const resp = await api.getAll("clientes");
+        console.log(resp);
         this.allClients = resp.data;
     },
 

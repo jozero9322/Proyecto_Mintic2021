@@ -6,21 +6,21 @@ const auth = require('../auth/auth');
 const {getClientes, getCliente,getClienteLogin,createCliente, editCliente, deleteCliente,token} = require('../controller/cliente.controller');
 
 // Gets all clients
-router.get('/clientes',getClientes);
+router.post('/clientes', auth, getClientes);
 
 // Gets only one client
-router.get('/cliente/:cedula', getCliente);
+router.post('/cliente/:cedula', auth, getCliente);
 
-router.get('/cliente/',getClienteLogin);
+router.get('/cliente',getClienteLogin);
 
-// Saves one client
+// Creates one client
 router.post('/cliente',createCliente);
 
 // Edits one client
 router.put('/cliente/:cedula',editCliente);
 
 // Deletes one client
-router.delete('/cliente/:cedula',deleteCliente);
+router.delete('/cliente/:cedula',  deleteCliente);
 
 // This route is to generate one token.
 router.post('/cliente/token',token);

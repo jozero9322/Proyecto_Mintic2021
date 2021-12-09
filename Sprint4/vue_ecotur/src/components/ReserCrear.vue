@@ -70,6 +70,7 @@
 
 <script>
 import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js"
 
 export default {
     name:"Paquetes",
@@ -93,8 +94,7 @@ export default {
             const _paqueteCodigo = document.getElementById('paquete_codigo').value;
 
             if ( _idReserva != "" && _personas != "" && _ninos != "" && _total != "" && _clienteCedula != ""  && _paqueteCodigo != "") {
-                console.log("hola");
-                await api.create("reserva",{id_reserva:_idReserva, personas:_personas, ninos: _ninos, total: _total, cliente_cedula:_clienteCedula, paquete_codigo:_paqueteCodigo});
+                await api.create("reserva",{id_reserva:_idReserva, personas:_personas, ninos: _ninos, total: _total, cliente_cedula:_clienteCedula, paquete_codigo:_paqueteCodigo, token: auth.getToken()});
                 this.actualiza();
                 this.limpiar();
             } else {
@@ -117,10 +117,10 @@ export default {
     },
     async mounted(){
 
-        const resp = await api.getAll("reservas");
+        const resp = await api.getAll("reservas", {token: auth.getToken()});
         this.allReservations = resp.data;
         document.getElementById('id_reserva').value = (this.allReservations.length) + 1;
-        const resp2 = await api.getAll("paquetes");
+        const resp2 = await api.getAll("paquetes", {token: auth.getToken()});
         this.allPackages = resp2.data;
      
     },

@@ -56,6 +56,7 @@ clienteCtrl.getClienteLogin = async (req, res) => {
 
 // Create a new Client
 clienteCtrl.createCliente = async (req, res) => {
+    
     try {
         const clientTemp = {
             cedula: req.body.cedula,
@@ -64,6 +65,7 @@ clienteCtrl.createCliente = async (req, res) => {
             password:req.body.password,
             token: "",
         };
+        
         let nuevoCliente = new modelCliente(clientTemp);
         await nuevoCliente.save();
         res.status(201).send("Se ha creado un cliente nuevo");
@@ -94,6 +96,7 @@ clienteCtrl.editCliente = async (req, res) => {
 
 // Delete a client.
 clienteCtrl.deleteCliente = async (req, res) => {
+        
     try {
         await modelCliente.deleteOne({cedula:req.params.cedula});
         res.status(201).send("El cliente se ha eliminado correctamente");

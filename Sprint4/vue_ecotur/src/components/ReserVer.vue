@@ -37,6 +37,7 @@
 
 <script>
 import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js"
 
 export default {
     name:"Paquetes",
@@ -52,7 +53,7 @@ export default {
     },
     async mounted(){
 
-        const resp = await api.getAll("reservas");
+        const resp = await api.getAll("reservas",{token:auth.getToken()});
         this.allReservations = resp.data;
     },
 

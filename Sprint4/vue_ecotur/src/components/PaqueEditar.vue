@@ -96,6 +96,8 @@ export default {
             document.getElementById('precio').value = "";
             document.getElementById('duracion').value = "";
             document.getElementById('salida').value = "";
+            this.siEditar = false;
+            this.codigo = false;
         },
         async actualiza(){
             const resp = await api.getAll("paquetes");

@@ -70,7 +70,7 @@ export default {
 
             if ( _cedula != "" && _nombre != "" && _usuario != ""  && _password != "") {
                 
-                await api.delete(`cliente/${_cedula}`,{token: auth.getToken()});
+                await api.delete(`cliente/${_cedula}`);
                 this.siEditar = false;
                 this.actualiza();
                 this.limpiar();

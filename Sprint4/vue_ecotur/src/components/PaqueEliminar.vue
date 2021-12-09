@@ -80,9 +80,10 @@ export default {
 
             if ( _codigo != "" && _nombre_pac != "" && _descripcion != "" && _duracion != "" && _salida != ""  && _precio != "") {
                 await api.delete(`paquete/${_codigo}`);
-                alert("El paquete se elimino exitosamente");
+                this.siEditar = false;
                 this.actualiza();
                 this.limpiar();
+                alert("El paquete se elimino exitosamente");
             } else {
                 alert('Ingrese todos los datos');
             }         

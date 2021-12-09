@@ -25,7 +25,7 @@
     <ClienteCrear v-if="crear"/>
     <ClienteVer v-if="ver" />
     <ClienteEditar v-if="editar" />
-    <ReserEliminar v-if="eliminar" />
+    <ClienteEliminar v-if="eliminar" />
 
      
   </div>
@@ -38,7 +38,7 @@ import Navegacion from "@/components/Navegacion"
 import ClienteCrear from "@/components/ClienteCrear"
 import ClienteVer from "@/components/ClienteVer"
 import ClienteEditar from "@/components/ClienteEditar"
-import ReserEliminar from "@/components/ReserEliminar"
+import ClienteEliminar from "@/components/ClienteEliminar"
 
 
 export default {
@@ -48,7 +48,7 @@ export default {
    ClienteCrear,
    ClienteVer,
    ClienteEditar,
-   ReserEliminar,
+   ClienteEliminar,
   },
   data:function(){
 

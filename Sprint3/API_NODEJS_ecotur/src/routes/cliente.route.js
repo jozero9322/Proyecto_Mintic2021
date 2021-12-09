@@ -3,14 +3,15 @@ const router = Router();
 const auth = require('../auth/auth');
 
 // Get the methos or functions from the cotroller to be used here.
-const {getClientes, getCliente,createCliente, editCliente, deleteCliente,token} = require('../controller/cliente.controller');
+const {getClientes, getCliente,getClienteLogin,createCliente, editCliente, deleteCliente,token} = require('../controller/cliente.controller');
 
 // Gets all clients
 router.get('/clientes',getClientes);
 
 // Gets only one client
-//router.get('/cliente/:cedula', getCliente);
-router.get('/cliente/',getCliente);
+router.get('/cliente/:cedula', getCliente);
+
+router.get('/cliente/',getClienteLogin);
 
 // Saves one client
 router.post('/cliente',createCliente);

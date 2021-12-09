@@ -16,7 +16,6 @@ clienteCtrl.getClientes = async (req, res) => {
 
 // Get only one Client
 // este metodo es para encontrar el cliente por cedula
-/*
 clienteCtrl.getCliente = async (req, res) => {
     
     try {
@@ -31,10 +30,10 @@ clienteCtrl.getCliente = async (req, res) => {
         res.status(400).send("Ocurrio un error en la operación");
     }
 };
-*/
+
 
 // este metodo es para buscar al cliente por usuario y password
-clienteCtrl.getCliente = async (req, res) => {
+clienteCtrl.getClienteLogin = async (req, res) => {
     
     try {
         const {usuario, password} = req.body;
@@ -70,7 +69,7 @@ clienteCtrl.createCliente = async (req, res) => {
         res.status(201).send("Se ha creado un cliente nuevo");
     } catch (error) {
         console.log(error);
-        res.status(400).send("Ocurrio un error en la operación");
+        res.status(400).send("Ocurrio un error en la operación2");
     }
 };
 

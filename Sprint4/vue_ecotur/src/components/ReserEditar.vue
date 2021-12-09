@@ -85,8 +85,10 @@ export default {
 
             if ( _id_reserva != "" && _personas != "" && _ninos != "" && _total != "" && _cliente_cedula != ""  && _paquete_codigo != "") {
                 await api.edit(`reserva/${_id_reserva}`,{id_reserva:_id_reserva, personas:_personas, ninos: _ninos, total: _total, cliente_cedula:_cliente_cedula, paquete_codigo:_paquete_codigo});
+                this.siEditar = false;
                 this.actualiza();
                 this.limpiar();
+                alert("La reserva se edito exitosamente");
             } else {
                 alert('Ingrese todos los datos');
             }         

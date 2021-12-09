@@ -1,8 +1,7 @@
 <template>
     <div class="contenedor">
         <div>
-            <h3>Editar Clientes</h3>
-
+            <h3>Eliminar Cliente</h3>
             <form class="formulario__registro" action="#">
 
                 <label class="formulario__registro-inputs" for="cedula">Cédula</label>
@@ -21,8 +20,8 @@
             </form>
             <div class="formulario-botones">  
                 <button type="button" @click="limpiar">Limpiar</button>
-                <button v-if="!codigo" type="button" @click="consultarDatos">Datos</button>
-                <button v-if="codigo" type="button" @click="editarCliente">Editar Cliente</button>
+                <button v-if="!codigo" type="button" @click="consultarCedula">Cédula</button>
+                <button v-if="codigo" type="button" @click="eliminarCliente">Eliminar Cliente</button>
 
             </div>
         </div>
@@ -34,7 +33,7 @@
 import api from "@/logic/api.js";
 
 export default {
-    name:"Clientes",
+    name:"Paquetes",
     data: function(){
         return {
             allClients: [],
@@ -46,36 +45,34 @@ export default {
 
     },
     methods: {
-        async consultarDatos(){
-            const consultarUsuario = document.getElementById('cedula').value;
-
-            let respuesta = await api.getOneClient(`cliente/${consultarUsuario}`);
+        async consultarCedula(){
+            const consultarCodigo = document.getElementById('cedula').value;
+            let respuesta = await api.getOne(`cliente/${consultarCodigo}`);
             
-            if ( respuesta.data.cedula == consultarUsuario) {
+            if ( respuesta.data.cedula == consultarCodigo) {
                 this.codigo = true;
                 this.siEditar = true;
                 document.getElementById('cedula').value = respuesta.data.cedula;
                 document.getElementById('nombre').value = respuesta.data.nombre;
                 document.getElementById('usuario').value = respuesta.data.usuario;
                 document.getElementById('password').value = respuesta.data.password;
-
             } else {
                 console.log("No hay resultado");
             }
             
         },
-        async editarCliente(){
+        async eliminarCliente(){
             const _cedula = document.getElementById('cedula').value;
             const _nombre = document.getElementById('nombre').value;
             const _usuario = document.getElementById('usuario').value;
             const _password = document.getElementById('password').value;
 
-            if ( _cedula != "" && _nombre != "" && _usuario != "" && _password != "" ) {
-                await api.edit(`cliente/${_cedula}`,{cedula:_cedula, nombre:_nombre, usuario: _usuario, password:_password});
+            if ( _cedula != "" && _nombre != "" && _usuario != ""  && _password != "") {
+                await api.delete(`cliente/${_cedula}`);
                 this.siEditar = false;
                 this.actualiza();
                 this.limpiar();
-                alert("Los datos del cliente fueron editados");
+                alert("El cliente ha sido Eliminado de la Base de Datos");
             } else {
                 alert('Ingrese todos los datos');
             }         
@@ -93,7 +90,6 @@ export default {
 
     },
     async mounted(){
-
         const resp = await api.getAll("clientes");
         this.allClients = resp.data;
     },

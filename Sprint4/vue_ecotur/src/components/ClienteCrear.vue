@@ -82,7 +82,7 @@ export default {
 
 
             if ( _cedula != "" && _nombre != "" && _usuario != "" && _password != "" ) {
-                await api.create("cliente",{cedula:_cedula, nombre:_nombre, usuario: _usuario, password: _password});
+                await api.create("cliente",{cedula: _cedula, nombre: _nombre, usuario: _usuario, password: _password, token:""});
                 this.actualiza();
             } else {
                 alert('Ingrese todos los datos');

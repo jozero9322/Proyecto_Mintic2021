@@ -33,6 +33,7 @@ export default {
 <style  scoped>
 body {
   padding: 2rem;
+
 }
 
 #img {

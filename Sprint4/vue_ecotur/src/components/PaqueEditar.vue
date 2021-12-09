@@ -80,8 +80,10 @@ export default {
 
             if ( _codigo != "" && _nombre_pac != "" && _descripcion != "" && _duracion != "" && _salida != ""  && _precio != "") {
                 await api.edit(`paquete/${_codigo}`,{codigo:_codigo, nombre_pac:_nombre_pac, descripcion: _descripcion, precio: _precio, duracion:_duracion, salida:_salida});
+                this.siEditar = false;
                 this.actualiza();
                 this.limpiar();
+                alert("El paquete ha sido editado correctamente");
             } else {
                 alert('Ingrese todos los datos');
             }         

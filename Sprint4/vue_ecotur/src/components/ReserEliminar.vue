@@ -27,7 +27,7 @@
             <div class="formulario-botones">  
                 <button type="button" @click="limpiar">Limpiar</button>
                 <button v-if="!codigo" type="button" @click="consultarCodigo">Id Reserva</button>
-                <button v-if="codigo" type="button" @click="eliminarPaquete">Eliminar Reserva</button>
+                <button v-if="codigo" type="button" @click="eliminarReserva">Eliminar Reserva</button>
 
             </div>
         </div>
@@ -70,7 +70,7 @@ export default {
             }
             
         },
-        async eliminarPaquete(){
+        async eliminarReserva(){
             const _id_reserva = document.getElementById('id_reserva').value;
             const _personas = document.getElementById('personas').value;
             const _ninos = document.getElementById('ninos').value;
@@ -80,8 +80,10 @@ export default {
 
             if ( _id_reserva != "" && _personas != "" && _ninos != "" && _cliente_cedula != "" && _paquete_codigo != ""  && _total != "") {
                 await api.delete(`reserva/${_id_reserva}`);
+                this.siEditar = false;
                 this.actualiza();
                 this.limpiar();
+                alert("La reserva se elimino exitosamente");
             } else {
                 alert('Ingrese todos los datos');
             }         

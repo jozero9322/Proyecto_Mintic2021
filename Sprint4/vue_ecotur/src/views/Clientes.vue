@@ -7,24 +7,24 @@
       <div>
       <fieldset >
           <label for="">
-              <input v-on:click="verCliente" type="radio" name="reserva" value="Ver">Ver Reservas
+              <input v-on:click="verCliente" type="radio" name="cliente" value="Ver">Ver Clientes
           </label>
           <label for="">
-              <input  v-on:click="crearCliente"  type="radio" name="reserva" value="Crear" >Crear una Reserva
+              <input  v-on:click="crearCliente"  type="radio" name="cliente" value="Crear" >Crear una Cliente
           </label>
           <label for="">
-              <input v-on:click="editarCliente" type="radio" name="reserva" value="Editar" >Editar una Reserva
+              <input v-on:click="editarCliente" type="radio" name="cliente" value="Editar" >Editar una Cliente
           </label>
           <label for="">
-              <input v-on:click="eliminarCliente" type="radio" name="reserva" value="Eliminar" >Eliminar una Reserva
+              <input v-on:click="eliminarCliente" type="radio" name="cliente" value="Eliminar" >Eliminar una Cliente
           </label>
 
       </fieldset>
     </div>
 
-    <ReserCrear v-if="crear"/>
+    <ClienteCrear v-if="crear"/>
     <ClienteVer v-if="ver" />
-    <ReserEditar v-if="editar" />
+    <ClienteEditar v-if="editar" />
     <ReserEliminar v-if="eliminar" />
 
      
@@ -35,9 +35,9 @@
 // @ is an alias to /src
 
 import Navegacion from "@/components/Navegacion"
-import ReserCrear from "@/components/ReserCrear"
+import ClienteCrear from "@/components/ClienteCrear"
 import ClienteVer from "@/components/ClienteVer"
-import ReserEditar from "@/components/ReserEditar"
+import ClienteEditar from "@/components/ClienteEditar"
 import ReserEliminar from "@/components/ReserEliminar"
 
 
@@ -45,9 +45,9 @@ export default {
   name: "Clientes",
   components: {
    Navegacion,
-   ReserCrear,
+   ClienteCrear,
    ClienteVer,
-   ReserEditar,
+   ClienteEditar,
    ReserEliminar,
   },
   data:function(){

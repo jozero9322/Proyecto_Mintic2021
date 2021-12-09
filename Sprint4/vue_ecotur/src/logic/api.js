@@ -13,6 +13,10 @@ export default {
         const aux = `${API}/${subdir}`;
         return axios.get(aux);
     },
+    getOneClient(subdir,objeto){
+        const aux = `${API}/${subdir}`;
+        return axios.get(aux,objeto);
+    },
     create(subdir, objeto){
         const aux = `${API}/${subdir}`;
         return axios.post(aux,objeto);

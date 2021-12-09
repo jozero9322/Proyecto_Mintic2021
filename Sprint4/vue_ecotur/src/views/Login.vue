@@ -53,6 +53,7 @@ export default {
     async verificar(){
       try {
         let obj_temp ={usuario: this.entrada_usuario,password:this.entrada_contrasena}
+        
         let respuesta = await api.token(obj_temp);
         auth.createToken(respuesta.data);
         alert("Bienvenido " + this.entrada_usuario);

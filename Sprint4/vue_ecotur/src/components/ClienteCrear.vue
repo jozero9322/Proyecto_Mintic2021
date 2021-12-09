@@ -61,6 +61,7 @@
 
 <script>
 import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js"
 
 export default {
     name:"Paquetes",
@@ -82,8 +83,9 @@ export default {
 
 
             if ( _cedula != "" && _nombre != "" && _usuario != "" && _password != "" ) {
-                await api.create("cliente",{cedula: _cedula, nombre: _nombre, usuario: _usuario, password: _password, token:""});
+                await api.create("cliente",{cedula: _cedula, nombre: _nombre, usuario: _usuario, password: _password, token:auth.getToken()});
                 this.actualiza();
+                this.limpiar();
             } else {
                 alert('Ingrese todos los datos');
             }         
@@ -95,14 +97,14 @@ export default {
             document.getElementById('password').value = "";
         },
         async actualiza(){
-            const resp = await api.getAll("clientes");
+            const resp = await api.getAll("clientes",{token:auth.getToken()});
             this.allClients = resp.data;
     }
 
     },
     async mounted(){
 
-        const respPaq = await api.getAll("clientes");
+        const respPaq = await api.getAll("clientes",{token:auth.getToken()});
         this.allClients = respPaq.data;
 
     },

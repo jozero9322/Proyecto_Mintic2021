@@ -69,6 +69,7 @@
 
 <script>
 import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js"
 
 export default {
     name:"Paquetes",
@@ -91,7 +92,7 @@ export default {
             const _salida = document.getElementById('salida').value;
 
             if ( _codigo != "" && _nombre_pac != "" && _descripcion != "" && _duracion != "" && _salida != ""  && _precio != "") {
-                await api.create("paquete",{codigo:_codigo, nombre_pac:_nombre_pac, descripcion: _descripcion, precio: _precio, duracion:_duracion, salida:_salida});
+                await api.create("paquete",{codigo:_codigo, nombre_pac:_nombre_pac, descripcion: _descripcion, precio: _precio, duracion:_duracion, salida:_salida,token:auth.getToken()});
                 this.actualiza();
             } else {
                 alert('Ingrese todos los datos');
@@ -106,14 +107,14 @@ export default {
             document.getElementById('salida').value = "";
         },
         async actualiza(){
-            const resp = await api.getAll("paquetes");
+            const resp = await api.getAll("paquetes", {token:auth.getToken()});
             this.allPackages = resp.data;
     }
 
     },
     async mounted(){
 
-        const respPaq = await api.getAll("paquetes");
+        const respPaq = await api.getAll("paquetes",{token:auth.getToken()});
         this.allPackages = respPaq.data;
 
     },

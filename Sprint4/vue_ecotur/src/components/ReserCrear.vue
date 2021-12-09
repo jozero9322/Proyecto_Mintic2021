@@ -122,6 +122,7 @@ export default {
         document.getElementById('id_reserva').value = (this.allReservations.length) + 1;
         const resp2 = await api.getAll("paquetes");
         this.allPackages = resp2.data;
+     
     },
 
 }

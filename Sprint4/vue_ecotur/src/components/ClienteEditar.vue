@@ -32,6 +32,7 @@
 
 <script>
 import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js"
 
 export default {
     name:"Clientes",
@@ -49,7 +50,7 @@ export default {
         async consultarDatos(){
             const consultarUsuario = document.getElementById('cedula').value;
 
-            let respuesta = await api.getOneClient(`cliente/${consultarUsuario}`);
+            let respuesta = await api.getOne(`cliente/${consultarUsuario}`,{token: auth.getToken()});
             
             if ( respuesta.data.cedula == consultarUsuario) {
                 this.codigo = true;
@@ -70,8 +71,10 @@ export default {
             const _usuario = document.getElementById('usuario').value;
             const _password = document.getElementById('password').value;
 
+            console.log(auth.getToken());
+
             if ( _cedula != "" && _nombre != "" && _usuario != "" && _password != "" ) {
-                await api.edit(`cliente/${_cedula}`,{cedula:_cedula, nombre:_nombre, usuario: _usuario, password:_password});
+                await api.edit(`cliente/${_cedula}`,{cedula:_cedula, nombre:_nombre, usuario: _usuario, password:_password, token: auth.getToken()});
                 this.siEditar = false;
                 this.actualiza();
                 this.limpiar();

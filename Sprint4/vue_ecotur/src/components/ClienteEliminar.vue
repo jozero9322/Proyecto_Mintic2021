@@ -31,6 +31,7 @@
 
 <script>
 import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js"
 
 export default {
     name:"Paquetes",
@@ -47,7 +48,7 @@ export default {
     methods: {
         async consultarCedula(){
             const consultarCodigo = document.getElementById('cedula').value;
-            let respuesta = await api.getOne(`cliente/${consultarCodigo}`);
+            let respuesta = await api.getOne(`cliente/${consultarCodigo}`,{token:auth.getToken()});
             
             if ( respuesta.data.cedula == consultarCodigo) {
                 this.codigo = true;
@@ -68,7 +69,8 @@ export default {
             const _password = document.getElementById('password').value;
 
             if ( _cedula != "" && _nombre != "" && _usuario != ""  && _password != "") {
-                await api.delete(`cliente/${_cedula}`);
+                
+                await api.delete(`cliente/${_cedula}`,{token: auth.getToken()});
                 this.siEditar = false;
                 this.actualiza();
                 this.limpiar();

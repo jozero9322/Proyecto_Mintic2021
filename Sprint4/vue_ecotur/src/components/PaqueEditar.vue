@@ -37,6 +37,7 @@
 
 <script>
 import api from "@/logic/api.js";
+import auth from "@/logic/autenticacion.js";
 
 export default {
     name:"Paquetes",
@@ -53,8 +54,8 @@ export default {
     methods: {
         async consultarCodigo(){
             const consultarCodigo = document.getElementById('codigo').value;
-            let respuesta = await api.getOne(`paquete/${consultarCodigo}`);
-            
+            let respuesta = await api.getOne(`paquete/${consultarCodigo}`, {token:auth.getToken()});
+            console.log(respuesta)
             if ( respuesta.data.codigo == consultarCodigo) {
                 this.codigo = true;
                 this.siEditar = true;

@@ -15,7 +15,8 @@
 li {
   padding: 8px;
   margin-right: 2px;
-  background-color: rgb(223, 133, 133);
+  background-color: rgb(22, 221, 32);
+  font-size: 25px;
 }
 </style>
 

@@ -28,8 +28,14 @@ export default {
 };
 </script>
 <style scoped>
+
+h1{
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+  font-size: 45px;
+}
 h2{
     color: blue;
+    
 }
 h3{
     color: rgb(46, 236, 46);

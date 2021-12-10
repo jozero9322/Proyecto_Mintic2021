@@ -11,7 +11,7 @@ router.post('/reserva/:id_reserva', auth, getReserva);
 
 // This method creates a new reservation
 router.post('/reserva', auth, createReserva);
-router.put('/reserva/:id_reserva',editReserva);
+router.put('/reserva/:id_reserva', auth, editReserva);
 router.delete('/reserva/:id_reserva',deleteReserva);
 
 module.exports = router;

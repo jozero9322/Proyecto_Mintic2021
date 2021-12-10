@@ -1,5 +1,6 @@
 const reservaCtrl = {};
 const modelReserva = require('../model/reserva.model');
+const modelCliente = require('../model/cliente.model');
 
 reservaCtrl.getReservas = async (req, res) => {
     try {
@@ -35,7 +36,12 @@ reservaCtrl.createReserva = async (req, res) => {
             cliente_cedula: req.body.cliente_cedula,
             paquete_codigo: req.body.paquete_codigo,
         };
-        
+/*
+        const cliente = await modelCliente.findOne({cedula:cliente_cedula});
+        if(cliente.legth == 0){
+            res.send("Esta cédula no esta en la base de datos");
+        }
+*/      
         let nuevaReserva = new modelReserva(reservaTemp);
         await nuevaReserva.save();
         res.status(201).send("Reserva Creada satisfactoriamente");

@@ -12,7 +12,6 @@ import Caldas from "../views/Caldas.vue";
 import Clientes from "../views/Clientes.vue";
 import Costa from "../views/Costa.vue";
 import Santander from "../views/Santander.vue";
-import Cedula from "@/views/Cedula.vue";
 import ComprasCliente from "@/views/ComprasCliente.vue";
 
 Vue.use(VueRouter);
@@ -84,11 +83,6 @@ const routes = [
     path: "/listado-paquetes",
     name: "listado-paquetes",
     component: Listado,
-  },
-  {
-    path: "/cedula",
-    name: "Cedula",
-    component: Cedula,
   },
   {
     path: "/about",

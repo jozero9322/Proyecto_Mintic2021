@@ -17,6 +17,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+
+h1{
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+  font-size: 45px;
+}
   
 </style>

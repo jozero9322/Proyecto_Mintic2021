@@ -2,6 +2,7 @@
   <nav class="navegacion">
     
     <li><router-link to="/listado-paquetes">Volver</router-link></li>
+    <li><router-link to="/index">Salir</router-link></li>
 
   </nav>
 </template>

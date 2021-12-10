@@ -3,7 +3,8 @@
     <NavPaquetes/>
     <br />
     <section>
-      <h1>ECOTURISMO CUNDINAMARCA</h1>
+      <h1>Ecoturismo en Colombia</h1>
+      <h2>ECOTURISMO EN CUNDINAMARCA</h2>
       <div>
         <h2>¿Qué actividades se pueden desarrollar en Cundinamarca?</h2>
         <br />
@@ -66,7 +67,18 @@
 body {
   padding: 2rem;
 }
-
+h1{
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+  font-size: 45px;
+}
+h2{
+    color: blue;
+    
+}
+h3{
+    color: rgb(46, 236, 46);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 #img {
   width: 20rem;
   height: 15rem;

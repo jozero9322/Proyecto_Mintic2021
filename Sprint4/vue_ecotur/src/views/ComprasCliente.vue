@@ -1,6 +1,7 @@
 <template>
   <div >
-    <NavHome/>
+
+    <NavPaquetes/>
     <h1>Compras Cliente</h1>
     <ReserCrear/>
    
@@ -9,13 +10,15 @@
 
 <script>
 // @ is an alias to /src
-import NavHome from "@/components/NavHome"
+
+import NavPaquetes from "@/components/NavPaquetes"
 import ReserCrear from "@/components/ReserCrear"
 
 export default {
   name: "ComprasCliente",
   components: {
-    NavHome,
+
+    NavPaquetes,
     ReserCrear,
   },
 };

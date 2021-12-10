@@ -80,11 +80,15 @@ export default {
             const _salida = document.getElementById('salida').value;
 
             if ( _codigo != "" && _nombre_pac != "" && _descripcion != "" && _duracion != "" && _salida != ""  && _precio != "") {
-                await api.delete(`paquete/${_codigo}`);
-                this.siEditar = false;
-                this.actualiza();
-                this.limpiar();
-                alert("El paquete se elimino exitosamente");
+                let answer = confirm("Realmente desea eliminar este Paquete?");
+                if (answer == true){
+                    await api.delete(`paquete/${_codigo}`);
+                    this.siEditar = false;
+                    this.actualiza();
+                    this.limpiar();
+                    alert("El paquete se elimino exitosamente");
+                }
+
             } else {
                 alert('Ingrese todos los datos');
             }         
@@ -96,6 +100,8 @@ export default {
             document.getElementById('precio').value = "";
             document.getElementById('duracion').value = "";
             document.getElementById('salida').value = "";
+            this.siEditar = false;
+            this.codigo = false;
         },
         async actualiza(){
             const resp = await api.getAll("paquetes");

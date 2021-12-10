@@ -7,22 +7,24 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Cedula Cliente</th>
+                    <th>Codigo Paquete</th>
                     <th>Personas</th>
                     <th>Niños</th>
                     <th>Total</th>
-                    <th>Cedula Cliente</th>
-                    <th>Codigo Paquete</th>
+
                 </tr>
             </thead>
 
             <tbody >
                 <tr v-for="eachPackage in allReservations" :key="eachPackage">
                     <td>{{eachPackage.id_reserva}}</td>
+                     <td>{{eachPackage.cliente_cedula}}</td>
+                    <td>{{eachPackage.paquete_codigo}}</td>
                     <td>{{eachPackage.personas}}</td>
                     <td>{{eachPackage.ninos}}</td>
                     <td>{{eachPackage.total}}</td>
-                    <td>{{eachPackage.cliente_cedula}}</td>
-                    <td>{{eachPackage.paquete_codigo}}</td>
+
                     
                 </tr>   
                             

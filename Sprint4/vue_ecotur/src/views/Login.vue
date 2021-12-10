@@ -55,17 +55,20 @@ export default {
         let obj_temp ={usuario: this.entrada_usuario,password:this.entrada_contrasena}
         
         let respuesta = await api.token(obj_temp);
+
         auth.createToken(respuesta.data);
         alert("Bienvenido " + this.entrada_usuario);
         document.getElementById('usuario').value = "";
         document.getElementById('contrasena').value = "";
+
         if (this.entrada_usuario === 'Administrador'){
           this.enrrutator('/reservas');
         } else {
-          this.enrrutator('/compras_cliente');
+          this.enrrutator('/listado-paquetes');
         }
       } catch (error) {
         console.log(error);
+        alert("El Usuario o el Password son incorrectos");
       }
     },
     enrrutator(dato){
@@ -115,6 +118,7 @@ export default {
 }
 
 .Login-form {
+
   background-image: url("../assets/Fondo.jpg");
   size-adjust: flex;
 }

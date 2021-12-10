@@ -7,7 +7,7 @@
             <form class="formulario__registro" action="#">
 
                 <label class="formulario__registro-inputs" for="id_reserva">Id Reserva</label>
-                <input class="formulario__registro-inputs" required type="text" placeholder="ID Reserva" id="id_reserva">
+                <input class="formulario__registro-inputs" required type="text"  disabled="true" id="id_reserva">
 
                 <label class="formulario__registro-inputs" for="cliente_cedula">Cedula Cliente</label>
                 <input class="formulario__registro-inputs" required type="text" placeholder="Cedula del Cliente" id="cliente_cedula">
@@ -95,14 +95,16 @@ export default {
 
             if ( _idReserva != "" && _personas != "" && _ninos != "" && _total != "" && _clienteCedula != ""  && _paqueteCodigo != "") {
                 await api.create("reserva",{id_reserva:_idReserva, personas:_personas, ninos: _ninos, total: _total, cliente_cedula:_clienteCedula, paquete_codigo:_paqueteCodigo, token: auth.getToken()});
+                alert("Su reserva ha sido hecha con éxito");
                 this.actualiza();
                 this.limpiar();
+                this.$router.push({path:'listado-paquetes'});
             } else {
                 alert('Ingrese todos los datos');
             }         
         },
         limpiar(){
-            document.getElementById('id_reserva').value = "";
+            //document.getElementById('id_reserva').value = "";
             document.getElementById('personas').value = "";
             document.getElementById('ninos').value = "";
             document.getElementById('total').value = "";
@@ -122,7 +124,7 @@ export default {
         document.getElementById('id_reserva').value = (this.allReservations.length) + 1;
         const resp2 = await api.getAll("paquetes", {token: auth.getToken()});
         this.allPackages = resp2.data;
-     
+        
     },
 
 }

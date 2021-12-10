@@ -69,12 +69,15 @@ export default {
             const _password = document.getElementById('password').value;
 
             if ( _cedula != "" && _nombre != "" && _usuario != ""  && _password != "") {
-                
-                await api.delete(`cliente/${_cedula}`);
-                this.siEditar = false;
-                this.actualiza();
-                this.limpiar();
-                alert("El cliente ha sido Eliminado de la Base de Datos");
+                let answer = confirm("Realmente desea eliminar este Cliente?");
+                if ( answer == true){
+                    await api.delete(`cliente/${_cedula}`);
+                    this.siEditar = false;
+                    this.actualiza();
+                    this.limpiar();
+                    alert("El cliente ha sido Eliminado de la Base de Datos");
+                }
+
             } else {
                 alert('Ingrese todos los datos');
             }         
@@ -84,6 +87,8 @@ export default {
             document.getElementById('nombre').value = "";
             document.getElementById('usuario').value = "";
             document.getElementById('password').value = "";
+            this.siEditar = false;
+            this.codigo = false;
         },
         async actualiza(){
             const resp = await api.getAll("clientes");

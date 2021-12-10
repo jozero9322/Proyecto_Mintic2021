@@ -7,6 +7,12 @@
                 <label class="formulario__registro-inputs" for="id_reserva">Id Reserva</label>
                 <input class="formulario__registro-inputs" required type="text" placeholder="ID Reserva" id="id_reserva">
 
+                <label v-show="siEditar" class="formulario__registro-inputs" for="cliente_cedula">Cedula Cliente</label>
+                <input v-show="siEditar" class="formulario__registro-inputs" required type="text" placeholder="Cedula del Cliente" id="cliente_cedula">
+
+                <label v-show="siEditar" class="formulario__registro-inputs" for="paquete_codigo">Codigo Paquete</label>
+                <input v-show="siEditar" class="formulario__registro-inputs" required type="text" placeholder="Codigo el Paquete" id="paquete_codigo">
+
                 <label v-show="siEditar" class="formulario__registro-inputs" for="personas">Personas Adultas</label>
                 <input v-show="siEditar" class="formulario__registro-inputs" required type="text" placeholder="Adultos" id="personas">
 
@@ -16,11 +22,6 @@
                 <label v-show="siEditar" class="formulario__registro-inputs" for="total">Total ($)</label>
                 <input v-show="siEditar" class="formulario__registro-inputs" required type="text" placeholder="Total" id="total">
 
-                <label v-show="siEditar" class="formulario__registro-inputs" for="cliente_cedula">Cedula Cliente</label>
-                <input v-show="siEditar" class="formulario__registro-inputs" required type="text" placeholder="Cedula del Cliente" id="cliente_cedula">
-
-                <label v-show="siEditar" class="formulario__registro-inputs" for="paquete_codigo">Codigo Paquete</label>
-                <input v-show="siEditar" class="formulario__registro-inputs" required type="text" placeholder="Codigo el Paquete" id="paquete_codigo">
 
 
             </form>
@@ -80,11 +81,14 @@ export default {
             const _paquete_codigo = document.getElementById('paquete_codigo').value;
 
             if ( _id_reserva != "" && _personas != "" && _ninos != "" && _cliente_cedula != "" && _paquete_codigo != ""  && _total != "") {
-                await api.delete(`reserva/${_id_reserva}`);
-                this.siEditar = false;
-                this.actualiza();
-                this.limpiar();
-                alert("La reserva se elimino exitosamente");
+                let answer = confirm("Realmente desea eliminar esta Reserva?");
+                if (answer == true) {
+                    await api.delete(`reserva/${_id_reserva}`);
+                    this.siEditar = false;
+                    this.actualiza();
+                    this.limpiar();
+                    alert("La reserva se elimino exitosamente");
+                }
             } else {
                 alert('Ingrese todos los datos');
             }         
@@ -96,6 +100,8 @@ export default {
             document.getElementById('total').value = "";
             document.getElementById('cliente_cedula').value = "";
             document.getElementById('paquete_codigo').value = "";
+            this.siEditar = false;
+            this.codigo = false;
         },
         async actualiza(){
             const resp = await api.getAll("reservas");

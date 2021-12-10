@@ -88,6 +88,8 @@ export default {
             document.getElementById('nombre').value = "";
             document.getElementById('usuario').value = "";
             document.getElementById('password').value = "";
+            this.siEditar = false;
+            this.codigo = false;
         },
         async actualiza(){
             const resp = await api.getAll("clientes");

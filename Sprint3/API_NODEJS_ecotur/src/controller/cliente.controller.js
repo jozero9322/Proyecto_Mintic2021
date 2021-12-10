@@ -108,7 +108,6 @@ clienteCtrl.deleteCliente = async (req, res) => {
 
 // Token: este funciona con Usuario y Password
 clienteCtrl.token = async (req, res) => {
-    
     try {
         const {usuario, password} = req.body;
         

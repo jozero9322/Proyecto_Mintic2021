@@ -2,7 +2,6 @@
   <div >
     
     <Navegacion/>
-    <Alert texto="token Expiro" v-if="!render"/>
 
     <h1>Gestion de Paquetes</h1>
       <div>
@@ -40,7 +39,7 @@ import PaqueCrear from "@/components/PaqueCrear"
 import PaqueVer from "@/components/PaqueVer"
 import PaqueEditar from "@/components/PaqueEditar"
 import PaqueEliminar from "@/components/PaqueEliminar"
-import Alert from "@/components/Alert.vue";
+
 
 
 export default {
@@ -51,7 +50,6 @@ export default {
    PaqueVer,
    PaqueEditar,
    PaqueEliminar,
-   Alert,
   },
   data:function(){
 

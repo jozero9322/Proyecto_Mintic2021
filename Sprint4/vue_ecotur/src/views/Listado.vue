@@ -19,9 +19,11 @@
         <router-link class="labels" to="/caldas">Caldas</router-link>
     </div>
 
-    <div >
-      <router-link class="comprar" to="/compras_cliente">Ir a comprar</router-link>
-      <label class="comprar" for=""></label>
+    <div class="contenedor_comprar">
+      <li class="comprar">
+        <router-link  to="/compras_cliente">Ir a comprar</router-link>
+      </li>
+      
     </div>
   </div>
 </template>
@@ -48,12 +50,19 @@ export default {
 .labels {
    padding: 10px;
 }
+.contenedor_comprar {
+  margin-top:30px;
+}
 .comprar {
-  width:400px;
-  height: 500px;
-  background-color: red;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  width:200px;
+  height: 30px;
+  background-color: rgb(0, 255, 21);
   font-size: 20px;
-
+  cursor: pointer;
 }
 </style>
 
